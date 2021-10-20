@@ -10,7 +10,8 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disks.nix
       ./gnome.nix
@@ -35,7 +36,7 @@ in
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub.useOSProber = true; 
+      grub.useOSProber = true;
     };
   };
 
@@ -75,7 +76,7 @@ in
       desktopManager.gnome.enable = true;
 
       # amdgpu
-      videoDrivers = ["amdgpu" ];
+      videoDrivers = [ "amdgpu" ];
 
       layout = "us";
     };
@@ -128,7 +129,7 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-  
+
   #env
   environment.etc = {
     "ansible/hosts".source = ../../../playbooks/hosts;
