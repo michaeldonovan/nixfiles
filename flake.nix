@@ -32,7 +32,6 @@
         monolith = {
           modules = [
             ./hosts/monolith/configuration.nix
-            ./hosts/monolith/home/home.nix
             home-manager.nixosModule
             musnix.nixosModules.musnix
             ({ pkgs, ... }:

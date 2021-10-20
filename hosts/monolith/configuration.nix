@@ -129,9 +129,9 @@ in
   system.stateVersion = "21.05"; # Did you read the comment?
 
   #env
-  environment.etc = {
-    "ansible/hosts".source = ../../../playbooks/hosts;
-  };
+  # environment.etc = {
+  #   "ansible/hosts".source = ../../../playbooks/hosts;
+  # };
 
   # hardware overrides
   hardware.logitech.wireless.enable = true;

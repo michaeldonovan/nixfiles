@@ -49,10 +49,10 @@
   # dotfiles
   home.file.".SpaceVim.d" = {
     recursive = true;
-    source = ../../../SpaceVim.d;
+    source = /home/michael/dotfiles/SpaceVim.d;
   };
-  home.file.".clang-format".source = ../../../.clang-format;
-  home.file.".tmux.conf".source = ../../../.tmux.conf;
+  home.file.".clang-format".source = /home/michael/dotfiles/.clang-format;
+  home.file.".tmux.conf".source = /home/michael/dotfiles/.tmux.conf;
 
   home.sessionVariables = {
     DO_NOT_TRACK = 1;

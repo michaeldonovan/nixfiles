@@ -5,5 +5,5 @@
     ssh-import-id
   ];
 
-  home.file.".ssh/config".source = ../../../ssh/config;
+  home.file.".ssh/config".source = /home/michael/dotfiles/ssh/config;
 }
