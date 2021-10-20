@@ -1,8 +1,7 @@
-
 { config, pkgs, ... }:
 
 {
-  users.users.michael.extraGroups = [ 
+  users.users.michael.extraGroups = [
     "docker"
   ];
 

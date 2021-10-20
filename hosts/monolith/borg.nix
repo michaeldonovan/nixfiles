@@ -36,14 +36,14 @@
         checks = [
           "repository"
           "archives"
-        ] ;
+        ];
       };
       hooks = {
         healthchecks = "https://hc-ping.com/1caf2395-22ca-4d21-877c-c0838ef36234";
       };
     };
   };
-  systemd.timers.borgmatictimer2= {
+  systemd.timers.borgmatictimer2 = {
     enable = true;
     description = "Timert to start borgmatic backup";
     wantedBy = [ "timers.target" ];

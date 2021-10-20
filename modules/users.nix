@@ -1,14 +1,14 @@
 { config, pkgs, lib, ... }:
-{ 
+{
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.michael = {
     isNormalUser = true;
     home = "/home/michael";
     shell = pkgs.fish;
     useDefaultShell = false;
-    extraGroups = [ 
-      "wheel" 
-    ]; 
+    extraGroups = [
+      "wheel"
+    ];
     openssh.authorizedKeys.keys = [
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHqLljawKuGhWuLpiFTs3cFj6sezvD0rVymaQ631QFZ4jHiJ5pqqyegWUcjGstxMRRymgPu2+evM3sKCvDo6/eU= "
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPUcN5An0gqAEH56hNzIMw8RmDGqSY/uGoenPskUHPM "

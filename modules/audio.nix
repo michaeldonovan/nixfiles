@@ -1,12 +1,11 @@
-
 { config, pkgs, ... }:
 
 {
   imports = [ <musnix> ];
 
   environment.systemPackages = with pkgs; [
-    qjackctl 
-    pavucontrol 
+    qjackctl
+    pavucontrol
     sound-theme-freedesktop
     playerctl
     alsa-utils
@@ -27,12 +26,12 @@
   security.sudo.extraRules = [
     {
       users = [ "michael" ];
-       commands = [
+      commands = [
         {
           command = "${pkgs.systemd}/bin/systemctl";
           options = [ "NOPASSWD" ];
         }
-      ];    
+      ];
     }
   ];
 
@@ -52,7 +51,7 @@
       nameList = "rtc0 snd";
     };
   };
-  
+
   users.users.michael = {
     extraGroups = [ "audio" ];
   };

@@ -22,14 +22,14 @@
   networking.interfaces.bond0 = {
     useDHCP = false;
     wakeOnLan.enable = true;
-    ipv4.addresses = [ {
+    ipv4.addresses = [{
       address = "192.168.1.220";
       prefixLength = 24;
-    } ];
+    }];
   };
 
   networking.defaultGateway = "192.168.1.1";
-  networking.nameservers = ["192.168.1.1"] ;
+  networking.nameservers = [ "192.168.1.1" ];
 
   services.mullvad-vpn.enable = true;
 }

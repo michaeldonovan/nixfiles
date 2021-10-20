@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  home.file."bin/docker-update"= {
+  home.file."bin/docker-update" = {
     executable = true;
     text = ''
       #!/usr/bin/env bash

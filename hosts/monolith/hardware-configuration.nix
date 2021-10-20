@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -14,13 +15,13 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/fa380a81-be3c-412b-a078-4478dc81812e";
+    {
+      device = "/dev/disk/by-uuid/fa380a81-be3c-412b-a078-4478dc81812e";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/315d5977-97f4-48cb-8b7b-29d195893f3f"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/315d5977-97f4-48cb-8b7b-29d195893f3f"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display
@@ -32,7 +33,7 @@
     rocm-opencl-runtime
     amdvlk
     intel-media-driver
-    vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+    vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
   ];
   hardware.opengl.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk

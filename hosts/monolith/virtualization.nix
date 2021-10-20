@@ -2,7 +2,7 @@
 
 # igpu: 0000:00:02.0
 {
-  users.users.michael.extraGroups = [ 
+  users.users.michael.extraGroups = [
     "libvirtd"
     "qemu-libvirtd"
   ];

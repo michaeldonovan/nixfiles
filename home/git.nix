@@ -2,7 +2,7 @@
 {
   programs.git = {
     enable = true;
-    userName  = "Michael Donovan";
+    userName = "Michael Donovan";
     userEmail = "michael@mdonovan.dev";
     delta.enable = true;
     ignores = [ "*~" "*.swp" ];

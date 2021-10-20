@@ -1,8 +1,8 @@
 { lib, pkgs, config, ... }:
 with lib;
-let 
+let
   cfg = config.programs.mykitty;
-in 
+in
 {
   options.programs.mykitty = {
     enable = mkEnableOption "Kitty";

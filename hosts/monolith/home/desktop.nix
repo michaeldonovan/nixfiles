@@ -1,4 +1,4 @@
-{ config, pkgs,  lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   monoFont = "CaskaydiaCove Nerd Font Mono";
   monoFontSize = "13";
@@ -59,8 +59,8 @@ in
     ardour
     calf
     carla
-  ]; 
-    
+  ];
+
   programs.vscode.enable = true;
   services.nextcloud-client = {
     enable = true;
@@ -77,7 +77,7 @@ in
     enable = true;
     theme = {
       name = "Yaru-dark";
-      package= pkgs.yaru-theme;
+      package = pkgs.yaru-theme;
     };
     iconTheme = {
       name = "Papirus";
@@ -88,14 +88,14 @@ in
       size = lib.toInt uiFontSize;
     };
   };
-  dconf.settings = with lib.hm.gvariant; { 
-    "org/gnome/nautilus/list-view" = { 
-      use-tree-view = true; 
-      default-zoom-level = "small"; 
-    }; 
-    "org/gnome/nautilus/preferences" = { 
-      default-folder-viewer = "list-view"; 
-    }; 
+  dconf.settings = with lib.hm.gvariant; {
+    "org/gnome/nautilus/list-view" = {
+      use-tree-view = true;
+      default-zoom-level = "small";
+    };
+    "org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "list-view";
+    };
     "org/gnome/desktop/interface" = {
       text-scaling-factor = 1.1;
       font-antialiasing = "grayscale";
@@ -117,7 +117,7 @@ in
     config = {
       global_config = {
         focus = "mouse";
-        title_hide_sizetext = true; 
+        title_hide_sizetext = true;
         inactive_color_offset = 0.5;
         title_use_system_font = false;
       };

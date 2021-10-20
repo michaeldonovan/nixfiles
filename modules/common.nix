@@ -1,6 +1,5 @@
-
 { config, pkgs, lib, ... }:
-{ 
+{
   imports = [
     ./users.nix
     <home-manager/nixos>
@@ -24,7 +23,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    git 
+    git
     fish
     fasd
     nix-prefetch-scripts

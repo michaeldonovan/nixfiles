@@ -1,7 +1,7 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   imports = [
-      ./cli.nix
+    ./cli.nix
   ];
 
   home.packages = with pkgs; [
@@ -15,5 +15,5 @@
     enable = true;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
-  }; 
+  };
 }

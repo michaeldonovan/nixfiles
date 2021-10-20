@@ -9,11 +9,12 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/common.nix
-      ../../modules/docker.nix 
-      ../../modules/zabbix-agent.nix 
+      ../../modules/docker.nix
+      ../../modules/zabbix-agent.nix
       <home-manager/nixos>
     ];
 
