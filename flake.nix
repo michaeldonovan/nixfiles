@@ -26,14 +26,20 @@
 
       channelsConfig.allowUnfree = true;
 
-      hostDefaults.system = "x86_64-linux";
+      hostDefaults = {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModule
+          ./modules/common.nix
+        ];
+      };
 
       hosts = {
         monolith = {
           modules = [
-            ./hosts/monolith/configuration.nix
-            home-manager.nixosModule
+            ./hosts/monolith
             musnix.nixosModules.musnix
+
             ({ pkgs, ... }:
               let
                 nur-no-pkgs = import nur {
@@ -49,13 +55,9 @@
           ];
         };
 
-        MacBook-Air = {
-          system = "aarch64-darwin";
-          output = "darwinConfigurations";
-          #builder = args: nix-darwin.lib.darwinSystem (removeAttrs args [ "system" ]);
+        nixos-template = {
           modules = [
-            ./hosts/MacBook-Air/home/home.nix
-            home-manager.darwinModule
+            ./hosts/nixos-template
           ];
         };
       };
