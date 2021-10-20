@@ -88,7 +88,11 @@ in
       size = lib.toInt uiFontSize;
     };
   };
+
   dconf.settings = with lib.hm.gvariant; {
+    "org/gnome/shell" = {
+      disable-extension-version-validation = true;
+    };
     "org/gnome/nautilus/list-view" = {
       use-tree-view = true;
       default-zoom-level = "small";
