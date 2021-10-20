@@ -18,7 +18,6 @@ in
       ./borg.nix
       ./networking.nix
       ./virtualization.nix
-      ./flatpak.nix
       ../../modules/common.nix
       ../../modules/yubikey.nix
       ../../modules/wine.nix
@@ -28,7 +27,6 @@ in
       ../../modules/docker.nix
       ../../modules/fonts.nix
       ../../modules/flakesupport.nix
-      <home-manager/nixos>
     ];
 
   # Use the systemd-boot EFI boot loader.

@@ -2,7 +2,6 @@
 {
   imports = [
     ./users.nix
-    <home-manager/nixos>
   ];
 
   # Set your time zone.

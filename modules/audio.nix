@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ <musnix> ];
-
   environment.systemPackages = with pkgs; [
     qjackctl
     pavucontrol

@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    musnix.url = "github:musnix/musnix"; 
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,13 +15,13 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, musnix, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
 
       sharedOverlays = [
-        inputs.nur.overlay
+        nur.overlay
       ];
 
       channelsConfig.allowUnfree = true;
@@ -33,6 +34,18 @@
             ./hosts/monolith/configuration.nix
             ./hosts/monolith/home/home.nix
             home-manager.nixosModule
+            musnix.nixosModules.musnix
+            ({ pkgs, ... }:
+              let
+                nur-no-pkgs = import nur {
+                  nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+                };
+              in {
+                imports = [
+                  nur-no-pkgs.repos.ilya-fedin.modules.flatpak-fonts
+                  nur-no-pkgs.repos.ilya-fedin.modules.flatpak-icons
+                ];
+            })
           ];
         };
 
