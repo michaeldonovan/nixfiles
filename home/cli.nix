@@ -5,9 +5,9 @@
     ./fish.nix
     ./ssh.nix
     ./git.nix
+    ./vim.nix
   ];
   home.packages = with pkgs; [
-    spacevim
     wget
     ripgrep
     git
@@ -39,20 +39,6 @@
 
   programs.htop.enable = true;
   programs.tmux.enable = true;
-  programs.vim.enable = true;
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    withPython3 = true;
-  };
-
-  # dotfiles
-  home.file.".SpaceVim.d" = {
-    recursive = true;
-    source = /home/michael/dotfiles/SpaceVim.d;
-  };
-  home.file.".clang-format".source = /home/michael/dotfiles/.clang-format;
-  home.file.".tmux.conf".source = /home/michael/dotfiles/.tmux.conf;
 
   home.sessionVariables = {
     DO_NOT_TRACK = 1;

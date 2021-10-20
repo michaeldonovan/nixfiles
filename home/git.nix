@@ -10,10 +10,5 @@
       signByDefault = true;
       key = "8F1CEA0A21036F44";
     };
-    extraConfig = {
-      hub = {
-        protocol = "ssh";
-      };
-    };
   };
 }

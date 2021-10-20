@@ -110,7 +110,7 @@ in
   };
 
   # fonts
-  fonts.fontconfig.enable = true;
+  # fonts.fontconfig.enable = true;
 
   programs.terminator = {
     enable = true;

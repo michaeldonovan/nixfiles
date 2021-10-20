@@ -38,6 +38,7 @@
         monolith = {
           modules = [
             ./hosts/monolith
+            ./hosts/monolith/home/home.nix
             ./modules/yubikey.nix
             ./modules/wine.nix
             ./modules/samba.nix

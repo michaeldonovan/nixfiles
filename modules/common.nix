@@ -32,6 +32,7 @@
     lm_sensors
     cpufrequtils
     smartmontools
+    ssh-import-id
   ];
 
   services.openssh = {
