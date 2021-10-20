@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 
 let
-  hostname = "monolith";
+  hostname = "nixos-template";
 in
 {
   imports =
