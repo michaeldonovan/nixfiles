@@ -28,6 +28,7 @@
     wakeonlan
     yubikey-manager
     yubikey-personalization
+    gh
 
     cmake
     colormake
