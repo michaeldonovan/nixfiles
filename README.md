@@ -1,2 +1,3 @@
 # nixfiles
-Nix config files
+
+Nix/NixOS config files for my personal machines.
