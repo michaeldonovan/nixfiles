@@ -128,5 +128,12 @@ in
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true; # for solaar to be included
 
+
+  # sleep
+  services.logind.extraConfig = ''
+    HandlePowerKey=suspend;
+    IdleAction=hybrid-sleep
+    IdleActionSec=60min
+  '';
 }
 
