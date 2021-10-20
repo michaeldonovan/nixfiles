@@ -11,7 +11,7 @@
           ../../../home/docker.nix
           ./desktop.nix
         ];
-        };
+      };
     };
   };
 
