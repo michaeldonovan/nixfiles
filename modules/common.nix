@@ -25,6 +25,7 @@
     git
     fish
     fasd
+    gnupg
     nix-prefetch-scripts
     nix-index
     lsof
@@ -40,6 +41,5 @@
 
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
   };
 }
