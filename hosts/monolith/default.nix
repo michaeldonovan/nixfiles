@@ -18,15 +18,6 @@ in
       ./borg.nix
       ./networking.nix
       ./virtualization.nix
-      ../../modules/common.nix
-      ../../modules/yubikey.nix
-      ../../modules/wine.nix
-      ../../modules/samba.nix
-      ../../modules/monitor-brightness.nix
-      ../../modules/audio.nix
-      ../../modules/docker.nix
-      ../../modules/fonts.nix
-      ../../modules/flakesupport.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

@@ -38,6 +38,13 @@
         monolith = {
           modules = [
             ./hosts/monolith
+            ./modules/yubikey.nix
+            ./modules/wine.nix
+            ./modules/samba.nix
+            ./modules/monitor-brightness.nix
+            ./modules/audio.nix
+            ./modules/docker.nix
+            ./modules/fonts.nix
             musnix.nixosModules.musnix
 
             ({ pkgs, ... }:
@@ -58,6 +65,8 @@
         nixos-template = {
           modules = [
             ./hosts/nixos-template
+            ./modules/docker.nix
+            ./modules/zabbix-agent.nix
           ];
         };
       };
