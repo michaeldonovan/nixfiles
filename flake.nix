@@ -38,7 +38,8 @@
         monolith = {
           modules = [
             ./hosts/monolith
-            ./hosts/monolith/home/home.nix
+            ./hosts/monolith/home
+
             ./modules/yubikey.nix
             ./modules/wine.nix
             ./modules/samba.nix
@@ -46,6 +47,7 @@
             ./modules/audio.nix
             ./modules/docker.nix
             ./modules/fonts.nix
+
             musnix.nixosModules.musnix
 
             ({ pkgs, ... }:
