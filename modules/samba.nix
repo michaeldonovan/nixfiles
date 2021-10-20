@@ -2,7 +2,8 @@
 
 let
   # this line prevents hanging on network split
-  opts = "uid=nobody,gid=users,noperm,credentials=/etc/nixos/smb-secrets,x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+  credentialsFile = "/etc/nixos/smb-secrets";
+  opts = "uid=nobody,gid=users,noperm,credentials=${credentialsFile},x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 in
 {
   fileSystems."/mnt/reliant/Backups" = {
