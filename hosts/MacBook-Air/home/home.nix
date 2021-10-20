@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../../modules/home/cli.nix
+    ../../../home/cli.nix
   ];
 
   home.sessionVariables = {

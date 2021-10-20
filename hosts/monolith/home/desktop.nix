@@ -8,7 +8,7 @@ in
 {
   imports = [
     ./gnome.nix
-    ../../../modules/home/kitty.nix
+    ../../../home/kitty.nix
   ];
 
   home.packages = with pkgs; [

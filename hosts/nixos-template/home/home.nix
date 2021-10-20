@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../../modules/home/cli-linux.nix
-    ../../../modules/home/docker.nix
+    ../../../home/cli-linux.nix
+    ../../../home/docker.nix
   ];
 
   # Let Home Manager install and manage itself.
