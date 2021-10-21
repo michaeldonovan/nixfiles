@@ -9,6 +9,10 @@
   environment.systemPackages = with pkgs; [ 
   ];
 
+  environment.shellAliases = {
+    rebuild = "darwin-rebuild switch --flake ~/nixfiles/";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   # Use a custom configuration.nix location.
