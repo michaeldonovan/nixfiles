@@ -13,9 +13,14 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, musnix, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, musnix, nix-darwin, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -26,20 +31,14 @@
 
       channelsConfig.allowUnfree = true;
 
-      hostDefaults = {
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModule
-          ./modules/common.nix
-        ];
-      };
-
       hosts = {
         monolith = {
+          system = "x86_64-linux";
           modules = [
             ./hosts/monolith
             ./hosts/monolith/home
 
+            ./modules/common.nix
             ./modules/yubikey.nix
             ./modules/wine.nix
             ./modules/samba.nix
@@ -49,6 +48,7 @@
             ./modules/fonts.nix
 
             musnix.nixosModules.musnix
+            home-manager.nixosModule
 
             ({ pkgs, ... }:
               let
@@ -65,11 +65,28 @@
           ];
         };
 
+        MacBook = {
+          system = "aarch64-darwin";
+          output = "darwinConfigurations";
+          builder = args: nix-darwin.lib.darwinSystem (removeAttrs args [ "system" ]);
+          modules = [
+            ./hosts/MacBook
+            ./hosts/MacBook/home
+
+            home-manager.darwinModule
+          ];
+        };
+
         nixos-template = {
+          system = "x86_64-linux";
           modules = [
             ./hosts/nixos-template
+
+            ./modules/common.nix
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
+
+            home-manager.nixosModule
           ];
         };
       };
