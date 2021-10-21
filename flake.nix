@@ -73,6 +73,8 @@
             ./hosts/MacBook
             ./hosts/MacBook/home
 
+            ./modules/fonts.nix
+
             home-manager.darwinModule
           ];
         };
