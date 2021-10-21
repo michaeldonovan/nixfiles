@@ -10,7 +10,7 @@
   ];
 
   environment.shellAliases = {
-    rebuild = "darwin-rebuild switch --flake ~/nixfiles/";
+    rebuild = "pushd ~/nixfiles && darwin-rebuild switch --flake ~/nixfiles/ && pushd";
   };
 
   nixpkgs.config.allowUnfree = true;
