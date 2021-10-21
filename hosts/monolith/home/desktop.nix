@@ -31,7 +31,6 @@ in
     _1password
     _1password-gui
     google-chrome
-    gitg
 
     # games
     steam

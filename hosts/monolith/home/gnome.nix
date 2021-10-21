@@ -20,6 +20,8 @@
     gnomeExtensions.always-indicator
     gnomeExtensions.workspaces-bar
     gnomeExtensions.just-perfection
+    gnomeExtensions.arc-menu
+
 
     gnome.gnome-applets
     gnome.gnome-shell-extensions
