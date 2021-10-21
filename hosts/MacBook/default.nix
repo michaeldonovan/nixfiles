@@ -6,14 +6,17 @@
       experimental-features = nix-command flakes
     '';
   };
+
+  users.users.michael = {
+    shell = pkgs.fish;
+  };
+ 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [ 
   ];
 
-  nix.autoOptimiseStore = true;
   nixpkgs.config.allowUnfree = true;
-  system.autoUpgrade.enable = true;
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix

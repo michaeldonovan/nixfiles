@@ -68,7 +68,7 @@
         MacBook = {
           system = "aarch64-darwin";
           output = "darwinConfigurations";
-          builder = args: nix-darwin.lib.darwinSystem (removeAttrs args [ "system" ]);
+          builder = nix-darwin.lib.darwinSystem;
           modules = [
             ./hosts/MacBook
             ./hosts/MacBook/home
