@@ -7,6 +7,11 @@
     "qemu-libvirtd"
   ];
   boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
+  boot.kernelParams = [ "intel_iommu=on" ];
+  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+
+  # passthrough windows boot drive
+  boot.extraModprobeConfig = "options vfio-pci ids=126f:2262";
 
   environment.systemPackages = with pkgs; [
     libvirt
@@ -30,8 +35,8 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-      qemuOvmf = true;
-      qemuRunAsRoot = true;
+      qemu.ovmf.enable = true;
+      qemu.runAsRoot = true;
 
       onBoot = "ignore";
       onShutdown = "shutdown";
