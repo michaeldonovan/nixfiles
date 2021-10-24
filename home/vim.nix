@@ -9,6 +9,10 @@
     withPython3 = true;
   };
 
+  home.sessionVariables = {
+    EDITOR = "${pkgs.spacevim}/bin/spacevim";
+  };
+
   home.file.".SpaceVim.d/init.toml".text = ''
     [options]
         relativenumber = false
