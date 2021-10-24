@@ -10,7 +10,7 @@
     nixFlakes
   ];
 
-  environment.shellAliases = {
+  programs.fish.shellAliases = {
     rebuild = "pushd ~/nixfiles && darwin-rebuild switch --flake ~/nixfiles/ && pushd";
   };
 
