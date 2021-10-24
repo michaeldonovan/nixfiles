@@ -29,8 +29,10 @@ in
     };
   };
 
+  # fix time issues when booting into windows
+  time.hardwareClockInLocalTime = true;
+
   networking.hostName = "${hostname}"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # security
   # security.pam.u2f = {
@@ -40,15 +42,6 @@ in
   #   control = "sufficient";
   # };
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-
-  # Enable the X11 windowing system.
   services = {
     printing.enable = true;
     gvfs.enable = true;
@@ -84,11 +77,6 @@ in
     };
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     htop
     python
@@ -102,12 +90,12 @@ in
     radeontop
     cmake
   ];
+
   environment.gnome.excludePackages = with pkgs; [
     gnome.gnome-terminal
     gnome.gnome_terminal
     gnome.gnome-software
   ];
-
 
   programs.dconf.enable = true;
 
