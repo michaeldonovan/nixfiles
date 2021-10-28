@@ -8,10 +8,10 @@
   ];
   boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
   boot.kernelParams = [ "intel_iommu=on" ];
-  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+  boot.kernelModules = [ "kvm-intel" "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
 
-  # passthrough windows boot drive
-  boot.extraModprobeConfig = "options vfio-pci ids=126f:2262";
+  # passthrough windows boot drive, vega graphics, vega audio
+  # boot.extraModprobeConfig = "options vfio-pci ids=126f:2262,1002:687f,1002:aaf8";
 
   environment.systemPackages = with pkgs; [
     libvirt
@@ -43,22 +43,10 @@
     };
   };
 
-  # systemd.tmpfiles.rules = [
-  #   "f /dev/shm/looking-glass 0660 michael qemu-libvirtd -"
-  #   "f /dev/shm/scream 0660 michael qemu-libvirtd -"
-  # ];
-
-  # systemd.user.services.scream-ivshmem = {
-  #   enable = true;
-  #   description = "Scream IVSHMEM";
-  #   serviceConfig = {
-  #     ExecStart =
-  #       "${pkgs.scream}/bin/scream -o pulse -m /dev/shm/scream";
-  #     Restart = "always";
-  #   };
-  #   wantedBy = [ "multi-user.target" ];
-  #   requires = [ "pipewire.service" ];
-  # };
+  systemd.tmpfiles.rules = [
+    "f /dev/shm/looking-glass 0660 michael qemu-libvirtd -"
+    # #   "f /dev/shm/scream 0660 michael qemu-libvirtd -"
+  ];
 
   # systemd.services."usb-libvirt-hotplug@" = {
   #   enable = true;
