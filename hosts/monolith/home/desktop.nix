@@ -17,7 +17,6 @@ in
     terminator
     alacritty
     kitty
-    remmina
     solaar
     authy
     rofi
