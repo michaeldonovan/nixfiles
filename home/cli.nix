@@ -29,6 +29,7 @@
     yubikey-manager
     yubikey-personalization
     gh
+    pre-commit
 
     cmake
     colormake
