@@ -15,6 +15,10 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  
+  programs.gnupg.agent = {
+    enable = true;
+  };
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
