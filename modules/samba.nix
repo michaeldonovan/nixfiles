@@ -21,6 +21,11 @@ in
     fsType = "cifs";
     options = [ "${opts}" ];
   };
+  fileSystems."/mnt/reliant/Downloads" = {
+    device = "//reliant.localdomain/Downloads";
+    fsType = "cifs";
+    options = [ "${opts}" ];
+  };
   fileSystems."/mnt/reliant/Plex" = {
     device = "//reliant.localdomain/Plex";
     fsType = "cifs";
