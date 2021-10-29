@@ -30,6 +30,7 @@ in
     _1password
     _1password-gui
     google-chrome
+    lutris
 
     # games
     steam
@@ -57,6 +58,8 @@ in
     ardour
     calf
     carla
+    puredata
+    zexy
   ];
 
   programs.vscode.enable = true;
