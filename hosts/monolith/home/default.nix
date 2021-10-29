@@ -9,6 +9,7 @@
         imports = [
           ../../../home/cli-linux.nix
           ../../../home/docker.nix
+          ../../../home/development.nix
           ./desktop.nix
         ];
       };

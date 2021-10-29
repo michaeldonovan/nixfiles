@@ -30,12 +30,6 @@
     yubikey-personalization
     gh
     pre-commit
-
-    cmake
-    colormake
-    gnumake
-    pkg-config
-    gcc
   ];
 
   programs.htop.enable = true;

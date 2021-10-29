@@ -88,7 +88,6 @@ in
     solaar
     swtpm
     radeontop
-    cmake
   ];
 
   environment.gnome.excludePackages = with pkgs; [
