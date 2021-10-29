@@ -100,7 +100,7 @@
             darwin-rebuild --flake . -j (nproc) $argv
             pushd
         else 
-            nixos-rebuild -j (nproc) $argv
+            sudo nixos-rebuild -j (nproc) $argv
         end
     end
   '';
