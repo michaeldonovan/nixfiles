@@ -15,6 +15,10 @@
       end
     '';
 
+    interactiveShellInit = ''
+      set -gx GPG_TTY (tty)
+    '';
+
     shellAbbrs = {
       pull = "git pull";
       push = "git push";
@@ -85,6 +89,18 @@
             echo $_
         else 
             prompt_pwd
+        end
+    end
+  '';
+
+  xdg.configFile."fish/functions/nix-rebuild.fish".text = ''
+    function nix-rebuild
+        if [ (uname) = "Darwin" ]
+            pushd ~/nixfiles 
+            darwin-rebuild --flake . -j (nproc) $argv
+            pushd
+        else 
+            nixos-rebuild -j (nproc) $argv
         end
     end
   '';

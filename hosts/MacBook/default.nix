@@ -10,10 +10,6 @@
     nixFlakes
   ];
 
-  programs.fish.shellAliases = {
-    rebuild = "pushd ~/nixfiles && darwin-rebuild switch --flake ~/nixfiles/ && pushd";
-  };
-
   nixpkgs.config.allowUnfree = true;
   
   programs.gnupg.agent = {
