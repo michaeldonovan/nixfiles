@@ -46,6 +46,7 @@
             ./modules/audio.nix
             ./modules/docker.nix
             ./modules/fonts.nix
+            ./modules/tablet.nix
 
             musnix.nixosModules.musnix
             home-manager.nixosModule
