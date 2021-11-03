@@ -12,7 +12,10 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-9.4.4"
   ];
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:michaeldonovan/nixfiles";
+  };
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
