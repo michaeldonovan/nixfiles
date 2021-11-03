@@ -30,6 +30,7 @@
     yubikey-personalization
     gh
     pre-commit
+    rsync
   ];
 
   programs.htop.enable = true;
