@@ -9,7 +9,7 @@
     hddtemp
     ansible
     mediainfo
-    nixops
+    nixopsUnstable
   ];
 
   services.gpg-agent = {
