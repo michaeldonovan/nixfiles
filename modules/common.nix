@@ -9,6 +9,9 @@
 
   nix.autoOptimiseStore = true;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-9.4.4"
+  ];
   system.autoUpgrade.enable = true;
 
   programs.fish.enable = true;
