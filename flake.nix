@@ -92,6 +92,19 @@
             home-manager.nixosModule
           ];
         };
+
+        algiers = {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/algiers
+            ./hosts/home
+
+            ./modules/common.nix
+            ./modules/docker.nix
+
+            home-manager.nixosModule
+          ];
+        };
       };
 
       outputsBuilder = channels: with channels.nixpkgs;{
