@@ -97,7 +97,6 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/algiers
-            ./hosts/home
 
             ./modules/common.nix
             ./modules/docker.nix
