@@ -14,7 +14,12 @@
   ];
   system.autoUpgrade = {
     enable = true;
-    flake = "github:michaeldonovan/nixfiles";
+    flake = "/home/michael/nixfiles/";
+    flags = [
+      "--update-input nixpkgs"
+      "--update-input home-manager"
+      "--commit-lock-file"
+    ];
   };
 
   programs.fish.enable = true;
