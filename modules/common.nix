@@ -18,7 +18,6 @@
     flags = [
       "--update-input nixpkgs"
       "--update-input home-manager"
-      "--commit-lock-file"
     ];
   };
 
