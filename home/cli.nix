@@ -5,6 +5,7 @@
     ./fish.nix
     ./git.nix
     ./vim.nix
+    ./python.nix
   ];
   home.packages = with pkgs; [
     wget
@@ -13,7 +14,6 @@
     hub
     mosh
     fasd
-    python
     tree
     tig
     nmap
