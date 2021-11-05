@@ -31,6 +31,7 @@
     gh
     pre-commit
     rsync
+    cargo
   ];
 
   programs.htop.enable = true;
