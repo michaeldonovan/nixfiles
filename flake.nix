@@ -84,6 +84,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/nixos-template
+            ./hosts/nixos-template/home
 
             ./modules/common.nix
             ./modules/docker.nix
