@@ -61,5 +61,26 @@
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPUcN5An0gqAEH56hNzIMw8RmDGqSY/uGoenPskUHPM "
   ];
+
+  systemd.services.nextcloud-previews = {
+    enable = true;
+    description = "Generate nextcloud previews";
+    after = [ "docker.service" ];
+    serviceConfig = {
+      ExecStart = "/home/michael/pre_generate.sh";
+    };
+  };
+
+  systemd.timers.nextcloud-previews = {
+    enable = true;
+    description = "Timer to generate nextcloud previews";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      Unit = "nextcloud-previews.service";
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+  };
+
 }
 
