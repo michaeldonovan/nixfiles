@@ -49,7 +49,7 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       Unit = "borgmatic.service";
-      OnCalendar = "* *-*-* 1:00:00";
+      OnCalendar = "daily";
       Persistent = true;
       WakeSystem = true;
     };
