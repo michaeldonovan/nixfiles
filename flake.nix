@@ -109,7 +109,7 @@
 
       outputsBuilder = channels: with channels.nixpkgs;{
         devShell = mkShell {
-          buildInputs = [ git nixpkgs-fmt lefthook ];
+          buildInputs = [ git vim wget nixpkgs-fmt ];
         };
       };
     };
