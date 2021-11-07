@@ -13,7 +13,5 @@
     arion
     nix-prefetch-docker
     ctop
-
-    gnomeExtensions.docker-integration
   ];
 }
