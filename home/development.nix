@@ -18,5 +18,7 @@
     nodejs
     yarn
     hugo
+
+    nixfmt
   ];
 }
