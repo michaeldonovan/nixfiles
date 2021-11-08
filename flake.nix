@@ -24,7 +24,6 @@
     utils.lib.mkFlake {
       inherit self inputs;
 
-
       sharedOverlays = [
         nur.overlay
       ];
@@ -80,11 +79,51 @@
           ];
         };
 
-        nixos-template = {
+        proxmox-template = {
           system = "x86_64-linux";
+          extraArgs = {
+            hostname = "proxmox-template";
+            ipAddr = "192.168.1.150";
+          };
           modules = [
-            ./hosts/nixos-template
-            ./hosts/nixos-template/home
+            ./hosts/proxmox-template
+            ./hosts/proxmox-template/home
+
+            ./modules/common.nix
+            ./modules/docker.nix
+            ./modules/zabbix-agent.nix
+
+            home-manager.nixosModule
+          ];
+        };
+
+        orchid = {
+          system = "x86_64-linux";
+          extraArgs = {
+            hostname = "orchid";
+            ipAddr = "192.168.1.158";
+          };
+          modules = [
+            ./hosts/proxmox-template
+            ./hosts/proxmox-template/home
+
+            ./modules/common.nix
+            ./modules/docker.nix
+            ./modules/zabbix-agent.nix
+
+            home-manager.nixosModule
+          ];
+        };
+
+        zabbix = {
+          system = "x86_64-linux";
+          extraArgs = {
+            hostname = "zabbix";
+            ipAddr = "192.168.1.159";
+          };
+          modules = [
+            ./hosts/proxmox-template
+            ./hosts/proxmox-template/home
 
             ./modules/common.nix
             ./modules/docker.nix

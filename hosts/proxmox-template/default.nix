@@ -2,11 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-let
-  hostname = "nixos-template";
-in
+{ config, pkgs, hostname, ipAddr, ... }:
 {
   imports =
     [
@@ -24,8 +20,6 @@ in
     "console=tty1"
   ];
 
-  networking.hostName = "${hostname}"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -33,31 +27,16 @@ in
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.ens18.useDHCP = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.michael = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  networking = {
+    hostName = hostname;
+    useDHCP = false;
+    domain = "localdomain";
+    defaultGateway = "192.168.1.1";
+    nameservers = [ "192.168.1.1" ];
+    interfaces.ens18.ipv4.addresses = [{
+      address = ipAddr;
+      prefixLength = 24;
+    }];
   };
 
   environment.systemPackages = with pkgs; [
