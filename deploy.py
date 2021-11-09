@@ -19,7 +19,7 @@ def get_hostname(ssh_config, host):
     if host_config:
         return host_config['hostname']
     else:
-        raise ValueError('Unable to find host in ssh config')
+        return None
 
 
 def format_result(result):
@@ -60,7 +60,10 @@ def deploy(hosts, flake):
             results[host] = os.system(
                 f'sudo nixos-rebuild switch -j $(nproc) --flake {flake}#{host} --target-host {hostname} --build-host localhost') == 0
         else:
-            print(colored(f"Host at {hostname} is unreachable", "red"))
+            print(colored('error:','red') +
+                  ' host at \'' +
+                  colored(f'{hostname}', 'magenta') +
+                  '\' is unreachable ')
             results[host] = False
         print()
 
