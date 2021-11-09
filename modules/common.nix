@@ -12,14 +12,6 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-9.4.4"
   ];
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/michael/nixfiles/";
-    flags = [
-      "--update-input nixpkgs"
-      "--update-input home-manager"
-    ];
-  };
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
