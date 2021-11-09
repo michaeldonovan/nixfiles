@@ -45,6 +45,8 @@
     git
   ];
 
+  services.qemuGuest.enable = true;
+
   powerManagement.enable = false;
 
   # This value determines the NixOS release from which the default
