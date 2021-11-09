@@ -4,6 +4,10 @@ let
   python-with-my-packages = pkgs.python3.withPackages (p: with p; [
     pip
     ipython
+    termcolor
+    tabulate
+    paramiko
+    autopep8
   ]);
 in
 {
