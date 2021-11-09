@@ -127,7 +127,6 @@
 
             ./modules/common.nix
             ./modules/docker.nix
-            ./modules/zabbix-agent.nix
 
             home-manager.nixosModule
           ];
