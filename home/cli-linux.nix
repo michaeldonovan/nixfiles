@@ -10,6 +10,7 @@
     ansible
     mediainfo
     nixopsUnstable
+    parted
   ];
 
   services.gpg-agent = {

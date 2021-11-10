@@ -32,7 +32,6 @@
     pre-commit
     rsync
     cargo
-    parted
   ];
 
   programs.htop.enable = true;
