@@ -7,7 +7,14 @@
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
+  networking.enableIPv6 = true;
+
   nix.autoOptimiseStore = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-9.4.4"
