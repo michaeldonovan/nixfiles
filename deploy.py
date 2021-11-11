@@ -117,7 +117,7 @@ def deploy(hosts: str, flake: str):
         hostname = get_hostname(ssh_config, host)
         print(
             colored(
-                f'------ Building for {host} ({hostname}) ------\n',
+                f'\n------ Building for {host} ({hostname}) ------\n',
                 attrs=['reverse']))
 
         if ping(hostname):
