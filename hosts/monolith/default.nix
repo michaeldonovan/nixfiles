@@ -124,5 +124,7 @@ in
     IdleAction=hybrid-sleep
     IdleActionSec=60min
   '';
+
+  services.avahi.enable = true;
 }
 

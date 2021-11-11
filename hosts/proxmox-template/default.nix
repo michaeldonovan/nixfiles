@@ -81,6 +81,8 @@ in
 
   services.qemuGuest.enable = true;
 
+  services.avahi.enable = true;
+
   powerManagement.enable = false;
 
   # This value determines the NixOS release from which the default
