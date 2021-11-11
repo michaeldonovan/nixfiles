@@ -8,6 +8,7 @@ let
     tabulate
     paramiko
     autopep8
+    speedtest-cli
   ]);
 in
 {
