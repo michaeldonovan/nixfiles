@@ -85,7 +85,6 @@
             hostname = "proxmox-template";
             lanAddr = "192.168.1.150";
             vlanAddr = "192.168.2.150";
-            extraPorts = [ ];
           };
           modules = [
             ./hosts/proxmox-template
@@ -104,7 +103,6 @@
             hostname = "orchid";
             lanAddr = "192.168.1.158";
             vlanAddr = "192.168.2.158";
-            extraPorts = [ 8581 ];
           };
           modules = [
             ./hosts/proxmox-template
@@ -113,6 +111,7 @@
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
+            ./modules/nofirewall.nix
 
             home-manager.nixosModule
           ];
@@ -123,7 +122,6 @@
             hostname = "zabbix";
             lanAddr = "192.168.1.159";
             vlanAddr = "192.168.2.159";
-            extraPorts = [ ];
           };
           modules = [
             ./hosts/proxmox-template

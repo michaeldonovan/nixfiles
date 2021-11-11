@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hostname, lanAddr, vlanAddr, extraPorts, ... }:
+{ config, pkgs, hostname, lanAddr, vlanAddr, ... }:
 let
   router = {
     lanAddr = "192.168.1.1";
@@ -66,10 +66,6 @@ in
           via = router.vlanAddr;
         }];
       };
-    };
-
-    firewall = {
-      allowedTCPPorts = extraPorts;
     };
   };
 
