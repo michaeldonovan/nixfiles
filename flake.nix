@@ -30,9 +30,10 @@
 
       channelsConfig.allowUnfree = true;
 
+      hostDefaults.system = "x86_64-linux";
+
       hosts = {
         monolith = {
-          system = "x86_64-linux";
           modules = [
             ./hosts/monolith
             ./hosts/monolith/home
@@ -80,10 +81,11 @@
         };
 
         proxmox-template = {
-          system = "x86_64-linux";
           extraArgs = {
             hostname = "proxmox-template";
-            ipAddr = "192.168.1.150";
+            lanAddr = "192.168.1.150";
+            vlanAddr = "192.168.2.150";
+            extraPorts = [ ];
           };
           modules = [
             ./hosts/proxmox-template
@@ -98,10 +100,11 @@
         };
 
         orchid = {
-          system = "x86_64-linux";
           extraArgs = {
             hostname = "orchid";
-            ipAddr = "192.168.1.158";
+            lanAddr = "192.168.1.158";
+            vlanAddr = "192.168.2.158";
+            extraPorts = [ 8581 ];
           };
           modules = [
             ./hosts/proxmox-template
@@ -116,10 +119,11 @@
         };
 
         zabbix = {
-          system = "x86_64-linux";
           extraArgs = {
             hostname = "zabbix";
-            ipAddr = "192.168.1.159";
+            lanAddr = "192.168.1.159";
+            vlanAddr = "192.168.2.159";
+            extraPorts = [ ];
           };
           modules = [
             ./hosts/proxmox-template
@@ -133,7 +137,6 @@
         };
 
         algiers = {
-          system = "x86_64-linux";
           modules = [
             ./hosts/algiers
             ./hosts/algiers/home

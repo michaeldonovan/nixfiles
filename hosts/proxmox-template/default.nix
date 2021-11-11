@@ -2,7 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hostname, ipAddr, ... }:
+{ config, pkgs, hostname, lanAddr, vlanAddr, extraPorts, ... }:
+let
+  router = {
+    lanAddr = "192.168.1.1";
+    vlanAddr = "192.168.2.1";
+  };
+  lanNet = "192.168.1.0";
+  prefixLength = 24;
+in
 {
   imports =
     [
@@ -24,19 +32,45 @@
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
   networking = {
     hostName = hostname;
-    useDHCP = false;
     domain = "localdomain";
-    defaultGateway = "192.168.1.1";
-    nameservers = [ "192.168.1.1" ];
-    interfaces.ens18.ipv4.addresses = [{
-      address = ipAddr;
-      prefixLength = 24;
-    }];
+    defaultGateway = router.lanAddr;
+    nameservers = [ router.lanAddr ];
+
+    interfaces.ens18 = {
+      useDHCP = false;
+      ipv4.addresses = [{
+        address = lanAddr;
+        prefixLength = prefixLength;
+      }];
+    };
+
+    vlans = {
+      vlan2 = {
+        id = 2;
+        interface = "ens18";
+      };
+    };
+
+    interfaces.vlan2 = {
+      useDHCP = false;
+      ipv4 = {
+        addresses = [{
+          address = vlanAddr;
+          prefixLength = prefixLength;
+        }];
+        routes = [{
+          address = lanNet;
+          prefixLength = prefixLength;
+          via = router.vlanAddr;
+        }];
+      };
+    };
+
+    firewall = {
+      allowedTCPPorts = extraPorts;
+    };
   };
 
   environment.systemPackages = with pkgs; [
