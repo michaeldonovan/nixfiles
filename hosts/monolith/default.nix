@@ -14,7 +14,6 @@ in
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disks.nix
-      ./gnome.nix
       ./borg.nix
       ./networking.nix
       ./virtualization.nix
@@ -53,9 +52,7 @@ in
     xserver = {
       enable = true;
 
-      # Enable the GNOME Desktop Environment.
       displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
 
       # amdgpu
       videoDrivers = [ "amdgpu" ];
@@ -88,12 +85,6 @@ in
     solaar
     swtpm
     radeontop
-  ];
-
-  environment.gnome.excludePackages = with pkgs; [
-    gnome.gnome-terminal
-    gnome.gnome_terminal
-    gnome.gnome-software
   ];
 
   programs.dconf.enable = true;
