@@ -39,6 +39,7 @@
             ./hosts/monolith/home
 
             ./modules/common.nix
+            ./modules/gnome.nix
             ./modules/yubikey.nix
             ./modules/wine.nix
             ./modules/samba.nix
