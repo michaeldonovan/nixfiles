@@ -7,7 +7,6 @@ let
 in
 {
   imports = [
-    ./gnome.nix
     ../../../home/kitty.nix
   ];
 
