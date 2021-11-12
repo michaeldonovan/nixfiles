@@ -106,6 +106,7 @@
             vlanAddr = "192.168.2.158";
           };
           modules = [
+            ./hosts/orchid
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
@@ -125,6 +126,8 @@
             vlanAddr = "192.168.2.159";
           };
           modules = [
+            ./hosts/zabbix
+            ./hosts/zabbix/home
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 

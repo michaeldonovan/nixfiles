@@ -1,14 +1,13 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   networking.firewall = {
     allowedTCPPorts = [ 10050 ];
   };
   services.zabbixAgent = {
     enable = true;
-    server = "zabbix.localdomain";
+    server = "10.100.0.2";
     settings = {
       Hostname = "${config.networking.hostName}";
-      ServerActive = "zabbix.localdomain";
     };
   };
 }
