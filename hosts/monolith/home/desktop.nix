@@ -30,6 +30,7 @@ in
     _1password-gui
     google-chrome
     lutris
+    gitkraken
 
     # games
     steam
