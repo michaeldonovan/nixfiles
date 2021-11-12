@@ -60,15 +60,6 @@ in
       layout = "us";
     };
 
-    zabbixAgent = {
-      enable = true;
-      server = "zabbix.localdomain";
-      settings = {
-        Hostname = "${config.networking.hostName}";
-        ServerActive = "zabbix.localdomain";
-      };
-    };
-
     pcscd = {
       enable = true;
     };

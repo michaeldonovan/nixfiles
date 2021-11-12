@@ -48,6 +48,7 @@
             ./modules/docker.nix
             ./modules/fonts.nix
             ./modules/tablet.nix
+            ./modules/zabbix-agent.nix
 
             musnix.nixosModules.musnix
             home-manager.nixosModule
