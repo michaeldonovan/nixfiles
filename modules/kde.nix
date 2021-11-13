@@ -10,5 +10,6 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    adapta-kde
-    }
+    adapta-kde-theme
+  ];
+}
