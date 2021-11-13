@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
+  # enp9s0 - Mellanox 10G
+  # enp8s0 - Intel 2.5G
+
   networking.interfaces.enp8s0.useDHCP = true;
 
   networking.bonds = {
