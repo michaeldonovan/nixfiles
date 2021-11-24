@@ -14,6 +14,7 @@
         source_directories = [
           "/home"
           "/etc"
+          "/secrets"
         ];
         exclude_patterns = [
           "*cache*"
@@ -25,7 +26,7 @@
         ];
       };
       storage = {
-        encryption_passcommand = "${pkgs.coreutils}/bin/cat /etc/borgmatic/key";
+        encryption_passcommand = "${pkgs.coreutils}/bin/cat /secrets/borgmatic_key";
         ssh_command = "${pkgs.openssh}/bin/ssh -i /home/michael/.ssh/id_ed25519";
         relocated_repo_access_is_ok = true;
       };

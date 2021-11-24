@@ -12,7 +12,7 @@ in
       ips = [ "10.100.0.2/24" ];
       listenPort = port;
 
-      privateKeyFile = "/etc/wireguard-keys/private";
+      privateKeyFile = "/secrets/wireguard-keys/private";
 
       peers = [
         {

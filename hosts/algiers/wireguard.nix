@@ -16,7 +16,7 @@ in
 
       listenPort = port;
 
-      privateKeyFile = "/etc/wireguard-keys/private";
+      privateKeyFile = "/secrets/wireguard-keys/private";
 
       peers = [
         {

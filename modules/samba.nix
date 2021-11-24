@@ -2,7 +2,7 @@
 
 let
   # this line prevents hanging on network split
-  credentialsFile = "/etc/nixos/smb-secrets";
+  credentialsFile = "/secrets/smb-secrets";
   opts = "uid=nobody,gid=users,noperm,credentials=${credentialsFile},x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 in
 {
