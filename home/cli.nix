@@ -32,6 +32,7 @@
     pre-commit
     rsync
     cargo
+    thefuck
   ];
 
   programs.htop.enable = true;

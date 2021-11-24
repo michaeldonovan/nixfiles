@@ -31,6 +31,7 @@ in
     google-chrome
     lutris
     gitkraken
+    nasc
 
     # games
     steam

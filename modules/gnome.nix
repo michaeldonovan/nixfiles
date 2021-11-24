@@ -21,7 +21,7 @@
     gnomeExtensions.always-indicator
     gnomeExtensions.just-perfection
     gnomeExtensions.arc-menu
-
+    gnomeExtensions.timepp
 
     gnome.gnome-applets
     gnome.gnome-shell-extensions
