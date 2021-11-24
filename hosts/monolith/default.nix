@@ -15,6 +15,7 @@ in
       ./hardware-configuration.nix
       ./disks.nix
       ./borg.nix
+      ./flatpak.nix
       ./networking.nix
       ./virtualization.nix
     ];
@@ -47,7 +48,6 @@ in
     openssh.enable = true;
     fstrim.enable = true;
     smartd.enable = true;
-    flatpak.enable = true;
 
     xserver = {
       enable = true;
