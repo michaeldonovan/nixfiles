@@ -5,7 +5,6 @@
     ./fish.nix
     ./git.nix
     ./vim.nix
-    ./python.nix
   ];
   home.packages = with pkgs; [
     wget
