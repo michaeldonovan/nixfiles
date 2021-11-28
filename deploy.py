@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import os
@@ -6,11 +6,16 @@ import platform
 import argparse
 import subprocess
 import json
+import sys
 from multiprocessing import cpu_count
 from typing import List
 from termcolor import colored
 from tabulate import tabulate
 from paramiko import SSHConfig
+
+LOCALHOST = 'localhost'
+ERR_CODE = 1
+OK_CODE = 0
 
 
 def format_result(result):
@@ -45,7 +50,7 @@ def ping(hostname: str) -> bool:
     Returns:
         bool: True if host was able to be pinged, False otherwise
     """
-    return os.system(f"ping -c 1 {hostname} >/dev/null 2>&1") == 0
+    return os.system(f"ping -c 1 {hostname} >/dev/null 2>&1") == OK_CODE
 
 
 def get_ssh_config() -> SSHConfig:
@@ -71,7 +76,7 @@ def get_hostname(ssh_config: SSHConfig, host: str) -> str:
         str: The hostname or None
     """
     if host == platform.node():
-        return 'localhost'
+        return LOCALHOST
 
     host_config = ssh_config.lookup(host)
     if host_config:
@@ -96,14 +101,14 @@ def deploy_host(flake: str, host: str, hostname: str) -> bool:
                 --flake {flake}#{host} \
                 --target-host {hostname} \
                 --build-host localhost'
-    return os.system(command) == 0
+    return os.system(command) == OK_CODE
 
 
-def deploy(hosts: str, flake: str):
-    """Runs nixos-rebuild on a given and deploys configuration to hosts
+def deploy(hosts: List[str], flake: str):
+    """Runs nixos-rebuild on local machine and deploys configuration to one or more hosts
 
     Args:
-        hosts (str): List of hosts to be deployed. Hosts must be listed in flake
+        hosts (List[str]): List of hosts to be deployed. Hosts must be listed in flake
         flake (str): Path to the nix flake to build
     """
     flake = os.path.abspath(flake)
@@ -133,6 +138,25 @@ def deploy(hosts: str, flake: str):
           for host, result in results.items()]))
 
 
+def deploy_darwin(hosts: List[str], flake: str):
+    """Runs darwin-rebuild 
+
+    Args:
+        hosts (List[str]): List of hosts to be deployed. Will only succeed if only host is localhost
+        flake (str): Path to the nix flake to build
+    """
+    hostname = get_hostname(hosts[0]) if hosts else LOCALHOST
+    if len(hosts) > 1 or hostname != LOCALHOST:
+        print(colored('error:', 'red', attrs=[
+              'bold']) + ' remote deployment not supported on macOS')
+        return ERR_CODE
+
+    command = f'darwin-rebuild switch \
+                -j {cpu_count()} \
+                --flake {flake}'
+    return os.system(command)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Builds and deploys NixOS configuration in a Nix flake')
@@ -141,7 +165,13 @@ if __name__ == '__main__':
     parser.add_argument("--flake", default='.',
                         help='path to flake. Will default to current directory if not provided')
     args = parser.parse_args()
+
+    exit_code = ERR_CODE
     try:
-        deploy(hosts=args.hosts, flake=args.flake)
+        if platform.system() == "Darwin":
+            exit_code = deploy_darwin(hosts=args.hosts, flake=args.flake)
+        else:
+            exit_code = deploy(hosts=args.hosts, flake=args.flake)
     except Exception as err:
         print(err)
+    sys.exit(exit_code)
