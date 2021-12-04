@@ -10,6 +10,7 @@
           ../../../home/cli-linux.nix
           ../../../home/docker.nix
           ../../../home/development.nix
+          ../../../home/python.nix
           ./desktop.nix
         ];
       };
