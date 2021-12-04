@@ -32,6 +32,8 @@
     rsync
     cargo
     thefuck
+    lazygit
+    lazydocker
   ];
 
   programs.htop.enable = true;
