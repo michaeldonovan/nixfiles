@@ -2,10 +2,12 @@
 {
   system.autoUpgrade = {
     enable = true;
-    flake = "github:michaeldonovan/nixfiles";
+    flake = "git@github.com:michaeldonovan/nixfiles.git";
+    allowReboot = true;
     flags = [
       "--update-input nixpkgs"
       "--update-input home-manager"
+      "--commit-lock-file"
     ];
   };
 }

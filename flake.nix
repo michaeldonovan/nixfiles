@@ -111,6 +111,7 @@
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
+            ./modules/autoupdate.nix
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
@@ -132,6 +133,7 @@
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
+            ./modules/autoupdate.nix
             ./modules/common.nix
             ./modules/docker.nix
 
@@ -144,6 +146,7 @@
             ./hosts/algiers
             ./hosts/algiers/home
 
+            ./modules/autoupdate.nix
             ./modules/common.nix
             ./modules/docker.nix
 
