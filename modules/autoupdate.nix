@@ -7,6 +7,7 @@
     flags = [
       "--update-input nixpkgs"
       "--update-input home-manager"
+      "--no-write-lock-file"
     ];
   };
 }
