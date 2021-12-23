@@ -34,6 +34,7 @@
     thefuck
     lazygit
     lazydocker
+    keybase
   ];
 
   programs.htop.enable = true;

@@ -48,6 +48,7 @@ in
     openssh.enable = true;
     fstrim.enable = true;
     smartd.enable = true;
+    keybase.enable = true;
 
     xserver = {
       enable = true;
