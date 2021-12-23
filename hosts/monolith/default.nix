@@ -66,6 +66,8 @@ in
     };
   };
 
+  programs.gnupg.agent.pinentryFlavor = "gnome3";
+
   environment.systemPackages = with pkgs; [
     htop
     python
