@@ -8,7 +8,7 @@
     ignores = [ "*~" "*.swp" ".nvimlog" ];
     signing = {
       signByDefault = true;
-      key = "8F1CEA0A21036F44";
+      key = "A63B40E64ED28BBF";
     };
     extraConfig = {
       init.defaultBranch = "main";
