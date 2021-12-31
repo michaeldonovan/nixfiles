@@ -31,11 +31,11 @@ in
       listenPort = 51821;
 
       postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.101.0.0/24 -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.101.0.0/24 -o enp1s0 -j MASQUERADE
       '';
 
       postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.101.0.0/24 -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.101.0.0/24 -o enp1s0 -j MASQUERADE
       '';
 
       privateKeyFile = "/secrets/wireguard-keys/private";
