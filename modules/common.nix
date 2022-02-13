@@ -9,7 +9,7 @@
 
   networking.enableIPv6 = true;
 
-  nix.autoOptimiseStore = true;
+  nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
