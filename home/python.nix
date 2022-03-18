@@ -9,6 +9,7 @@ let
     paramiko
     autopep8
     speedtest-cli
+    PyGithub
   ]);
 in
 {
