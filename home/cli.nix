@@ -35,6 +35,7 @@
     lazygit
     lazydocker
     keybase
+    tea
   ];
 
   programs.htop.enable = true;
