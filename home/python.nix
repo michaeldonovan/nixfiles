@@ -10,6 +10,7 @@ let
     autopep8
     speedtest-cli
     PyGithub
+    tqdm
   ]);
 in
 {
