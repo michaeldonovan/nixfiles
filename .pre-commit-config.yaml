@@ -20,8 +20,3 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: [types-paramiko, types-termcolor, types-tabulate]
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 4.0.1
-    hooks:
-      - id: flake8
-        exclude: migrations|snippets
