@@ -142,6 +142,26 @@
           ];
         };
 
+        rhea = {
+          extraArgs = {
+            hostname = "rhea";
+            lanAddr = "192.168.1.142";
+            vlanAddr = "192.168.2.142";
+          };
+          modules = [
+            ./hosts/rhea
+            ./hosts/proxmox-template
+            ./hosts/proxmox-template/home
+
+            ./modules/autoupdate.nix
+            ./modules/common.nix
+            ./modules/docker.nix
+            ./modules/nofirewall.nix
+
+            home-manager.nixosModule
+          ];
+        };
+
         algiers = {
           modules = [
             ./hosts/algiers
