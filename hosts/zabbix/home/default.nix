@@ -11,7 +11,7 @@
 
             pushd ~/zabbix-docker
             docker-compose -f docker-compose_v3_alpine_mysql_latest.yaml pull
-            docker-compose -f docker-compose_v3_alpine_mysql_latest.yaml up -d
+            docker-compose -f docker-compose_v3_alpine_mysql_latest.yaml --profile full up -d
             pushd  
           '';
         };
