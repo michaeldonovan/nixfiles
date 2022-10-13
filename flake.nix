@@ -156,6 +156,7 @@
             ./modules/autoupdate.nix
             ./modules/common.nix
             ./modules/docker.nix
+            ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
 
             home-manager.nixosModule
