@@ -31,31 +31,10 @@
 
   services.rpcbind.enable = true; # needed for NFS
 
-  fileSystems."/rendon/Plex" = {
-    device = "192.168.1.146:/mnt/rendon/Plex";
+  fileSystems."/rendon" = {
+    device = "192.168.1.146:/mnt/rendon/";
     fsType = "nfs";
   };
-  fileSystems."/rendon/Downloads" = {
-    device = "192.168.1.146:/mnt/rendon/Downloads";
-    fsType = "nfs";
-  };
-  fileSystems."/rendon/Documents" = {
-    device = "192.168.1.146:/mnt/rendon/Documents";
-    fsType = "nfs";
-  };
-  fileSystems."/rendon/Books" = {
-    device = "192.168.1.146:/mnt/rendon/Books";
-    fsType = "nfs";
-  };
-  fileSystems."/rendon/Backups" = {
-    device = "192.168.1.146:/mnt/rendon/Backups";
-    fsType = "nfs";
-  };
-  fileSystems."/rendon/borg" = {
-    device = "192.168.1.146:/mnt/rendon/borg";
-    fsType = "nfs";
-  };
-
 
   systemd.services.pfsense-backup= {
     enable = true;
