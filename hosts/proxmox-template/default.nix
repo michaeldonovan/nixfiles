@@ -23,6 +23,8 @@ in
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
+  services.fstrim.enable = true;
+
   boot.kernelParams = [
     "console=ttyS0,115200"
     "console=tty1"
