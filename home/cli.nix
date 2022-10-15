@@ -36,6 +36,7 @@
     lazydocker
     keybase
     tea
+    gcc
   ];
 
   programs.htop.enable = true;
