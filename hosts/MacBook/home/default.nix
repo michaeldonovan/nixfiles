@@ -9,7 +9,7 @@
         imports = [
           ../../../home/cli.nix
         ];
-        
+
         home.sessionVariables = {
           SSH_AUTH_SOCK = "/Users/michael/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
         };

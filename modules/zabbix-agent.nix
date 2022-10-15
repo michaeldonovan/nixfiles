@@ -11,7 +11,7 @@
       ServerActive = "zabbix.localdomain";
 
 
-      UserParameter=[
+      UserParameter = [
         # ZFS discovery and configuration
         # original template from pbergbolt (source = https://www.zabbix.com/forum/showthread.php?t=43347), modified by Slash <slash@aceslash.net>
 

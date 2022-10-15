@@ -3,15 +3,15 @@
   users.users.michael = {
     shell = pkgs.fish;
   };
- 
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     nixFlakes
   ];
 
   nixpkgs.config.allowUnfree = true;
-  
+
   programs.gnupg.agent = {
     enable = true;
   };
