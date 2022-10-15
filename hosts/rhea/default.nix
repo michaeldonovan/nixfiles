@@ -19,6 +19,10 @@
         daily = 3;
         hourly = 6;
       };
+      "rhea/email" = {
+        autoprune = true;
+        daily = 7;
+      };
     };
   };
 
@@ -53,6 +57,14 @@
   };
   fileSystems."/rendon/borg" = {
     device = "192.168.1.146:/mnt/rendon/borg";
+    fsType = "nfs";
+  };
+  fileSystems."/rendon/Pictures" = {
+    device = "192.168.1.146:/mnt/rendon/Pictures";
+    fsType = "nfs";
+  };
+  fileSystems."/rendon/Music" = {
+    device = "192.168.1.146:/mnt/rendon/Music";
     fsType = "nfs";
   };
 
