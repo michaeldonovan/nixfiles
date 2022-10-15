@@ -39,6 +39,7 @@ in
     domain = "localdomain";
     defaultGateway = router.lanAddr;
     nameservers = [ router.lanAddr ];
+    useDHCP = false;
 
     interfaces.ens18 = {
       useDHCP = false;
