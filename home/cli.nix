@@ -5,6 +5,7 @@
     ./fish.nix
     ./git.nix
     ./vim.nix
+    ./tmux.nix
   ];
   home.packages = with pkgs; [
     wget
@@ -40,7 +41,6 @@
   ];
 
   programs.htop.enable = true;
-  programs.tmux.enable = true;
 
   home.sessionVariables = {
     DO_NOT_TRACK = 1;
