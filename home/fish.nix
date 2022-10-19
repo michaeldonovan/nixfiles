@@ -17,6 +17,10 @@
 
     interactiveShellInit = ''
       set -gx GPG_TTY (tty)
+      
+      if test -z "$TMUX"  && test -n "$SSH_CONNECTION" 
+        tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+      end
     '';
 
     shellAbbrs = {
