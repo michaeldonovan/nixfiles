@@ -32,8 +32,10 @@
     ];
     extraConfig = "
       set -g mouse on
-#      #set -g status-right '#{cpu_bg_color} CPU: #{cpu_percentage} #{ram_bg_color} MEM: #{ram_percentage} #(hostname) '
       set -g status-keys vi
+      set-window-option -g xterm-keys on
+
+#      #set -g status-right '#{cpu_bg_color} CPU: #{cpu_percentage} #{ram_bg_color} MEM: #{ram_percentage} #(hostname) '
 
 
       #
