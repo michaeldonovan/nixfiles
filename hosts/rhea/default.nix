@@ -1,11 +1,15 @@
 { config, ... }:
+
+let
+  nfsOpts = "x-systemd.automount";
+in
 {
   imports =
     [
     ];
 
   boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [ "zfs.zfs_arc_max=512000000" ];
+  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   networking.hostId = "5595a05c";
   boot.zfs.extraPools = [ "rhea" ];
   services.zfs = {
@@ -18,6 +22,7 @@
         autoprune = true;
         daily = 3;
         hourly = 6;
+        recursive = true;
       };
       "rhea/email" = {
         autoprune = true;
@@ -38,34 +43,42 @@
   fileSystems."/rendon/Plex" = {
     device = "192.168.1.146:/mnt/rendon/Plex";
     fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Downloads" = {
     device = "192.168.1.146:/mnt/rendon/Downloads";
     fsType = "nfs";
-  };
-  fileSystems."/rendon/Documents" = {
-    device = "192.168.1.146:/mnt/rendon/Documents";
-    fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Books" = {
     device = "192.168.1.146:/mnt/rendon/Books";
     fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Backups" = {
     device = "192.168.1.146:/mnt/rendon/Backups";
     fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/borg" = {
     device = "192.168.1.146:/mnt/rendon/borg";
     fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Pictures" = {
     device = "192.168.1.146:/mnt/rendon/Pictures";
     fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Music" = {
     device = "192.168.1.146:/mnt/rendon/Music";
     fsType = "nfs";
+    options = [ "${nfsOpts}" "ro" ];
+  };
+  fileSystems."/rendon/Documents" = {
+    device = "192.168.1.146:/mnt/rendon/Documents";
+    fsType = "nfs";
+    options = [ "${nfsOpts}" "ro" ];
   };
 
 
