@@ -30,11 +30,9 @@
       j = "fasd_cd -d";
       vim = "spacevim";
       ytdl = "youtube-dl -i -f \"bestvideo+bestaudio\"";
-      nixup = "sudo nix-channel --update";
-      searchup = "sudo nix search -u";
       gc = "sudo nix-collect-garbage --delete-older-than 7d";
-      nixbuild = "sudo nixos-rebuild switch -j 16";
-      nixcfg = "vim ~/dotfiles/nix/hosts/(hostname)/configuration.nix";
+      up-compose = "docker-compose up -d";
+      down-compose = "docker-compose down";
     };
 
     shellAliases = {
