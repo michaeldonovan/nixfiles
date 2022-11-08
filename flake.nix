@@ -116,6 +116,7 @@
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
+            ./modules/summit-user.nix
 
             home-manager.nixosModule
           ];
@@ -158,6 +159,7 @@
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
+            ./modules/summit-user.nix
 
             home-manager.nixosModule
           ];
