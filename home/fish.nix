@@ -10,9 +10,6 @@
     enable = true;
     shellInit = ''
       set -g simple_ass_prompt_greeting . 
-      if [ $TERM = "xterm-kitty" ]
-          alias ssh="kitty +kitten ssh"
-      end
     '';
 
     interactiveShellInit = ''
