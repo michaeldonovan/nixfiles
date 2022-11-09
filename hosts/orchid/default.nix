@@ -1,4 +1,7 @@
 { config, ... }:
+let
+  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto,soft";
+in
 {
   imports =
     [
@@ -29,6 +32,11 @@
   fileSystems."/rendon/orchidbackups" = {
     device = "192.168.1.146:/mnt/rendon/orchidbackups";
     fsType = "nfs";
-    options = [ "user" ];
+    options = [ "${nfsOpts}" "user" ];
+  };
+  fileSystems."/rendon/Books" = {
+    device = "192.168.1.146:/mnt/rendon/Books";
+    fsType = "nfs";
+    options = [ "${nfsOpts}" ];
   };
 }
