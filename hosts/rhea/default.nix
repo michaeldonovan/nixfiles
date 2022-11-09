@@ -24,12 +24,15 @@ in
       "rhea" = {
         autoprune = true;
         daily = 7;
+        hourly = 0;
+        monthly = 0;
         recursive = true;
       };
       "rhea/appdata" = {
         autoprune = true;
         daily = 3;
-        hourly = 24;
+        hourly = 6;
+        monthly = 0;
         recursive = true;
       };
     };
