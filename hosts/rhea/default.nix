@@ -9,6 +9,7 @@ in
 {
   imports =
     [
+      ./gpu.nix
     ];
 
   boot.supportedFilesystems = [ "zfs" ];

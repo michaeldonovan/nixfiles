@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hostname, lanAddr, vlanAddr, ... }:
+{ config, pkgs, hostname, netiface, lanAddr, vlanAddr, ... }:
 let
   router = {
     lanAddr = "192.168.1.1";
@@ -41,7 +41,7 @@ in
     nameservers = [ router.lanAddr ];
     useDHCP = false;
 
-    interfaces.ens18 = {
+    interfaces.${netiface} = {
       useDHCP = false;
       ipv4.addresses = [{
         address = lanAddr;
@@ -52,7 +52,7 @@ in
     vlans = {
       vlan2 = {
         id = 2;
-        interface = "ens18";
+        interface = netiface;
       };
     };
 

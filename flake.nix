@@ -85,6 +85,7 @@
         proxmox-template = {
           extraArgs = {
             hostname = "proxmox-template";
+            netiface = "ens18";
             lanAddr = "192.168.1.150";
             vlanAddr = "192.168.2.150";
           };
@@ -103,6 +104,7 @@
         orchid = {
           extraArgs = {
             hostname = "orchid";
+            netiface = "ens18";
             lanAddr = "192.168.1.158";
             vlanAddr = "192.168.2.158";
           };
@@ -125,6 +127,7 @@
         zabbix = {
           extraArgs = {
             hostname = "zabbix";
+            netiface = "ens18";
             lanAddr = "192.168.1.159";
             vlanAddr = "192.168.2.159";
           };
@@ -146,6 +149,7 @@
         rhea = {
           extraArgs = {
             hostname = "rhea";
+            netiface = "enp6s18";
             lanAddr = "192.168.1.142";
             vlanAddr = "192.168.2.142";
           };
