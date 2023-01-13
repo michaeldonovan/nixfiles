@@ -76,6 +76,7 @@ in
     wget
     vim
     git
+    pciutils
   ];
 
   services.qemuGuest.enable = true;
