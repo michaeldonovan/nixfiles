@@ -6,5 +6,11 @@
     enable = true;
     driSupport32Bit = true;
   };
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia = {
+    nvidiaPersistenced = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+  };
+  boot.kernelParams = [ "pcie_aspm=off" ];
 }
