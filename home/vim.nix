@@ -21,6 +21,7 @@
         colorscheme='hybrid'
         terminal_cursor_shape=2
         bootstrap_before = 'myspacevim#before'
+        bootstrap_after = 'myspacevim#after'
 
     [[layers]]
         name = "lang#sh"
@@ -60,6 +61,9 @@
         inoremap lkj <Esc>:wq<CR>
         set listchars=tab:>-
         set list
+    endfunction
+
+    function! myspacevim#after() abort
     endfunction
   '';
 }
