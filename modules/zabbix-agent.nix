@@ -53,6 +53,19 @@
         "zfs.vdev.error_counter.write[*],/run/current-system/sw/bin/zpool status | grep \"$1\" | /run/current-system/sw/bin/awk '{ print $$4 }' | numfmt --from=si"
         # vdev CHECKSUM error counter
         "zfs.vdev.error_counter.cksum[*],/run/current-system/sw/bin/zpool status | grep \"$1\" | /run/current-system/sw/bin/awk '{ print $$5 }' | numfmt --from=si"
+
+
+
+        # nvidia
+        # https://github.com/zabbix/community-templates/tree/main/Server_Hardware/Other/template_nvidia-smi_integration/6.0
+        "gpu.temp,/run/current-system/sw/bin/nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits -i 0"
+        "gpu.memtotal,/run/current-system/sw/bin/nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits -i 0"
+        "gpu.used,/run/current-system/sw/bin/nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits -i 0"
+        "gpu.free,/run/current-system/sw/bin/nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits -i 0"
+        "gpu.fanspeed,/run/current-system/sw/bin/nvidia-smi --query-gpu=fan.speed --format=csv,noheader,nounits -i 0"
+        "gpu.utilisation,/run/current-system/sw/bin/nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits -i 0"
+        "gpu.power,/run/current-system/sw/bin/nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits -i 0"
+        "gpu.available,/run/current-system/sw/bin/nvidia-smi > /dev/null; echo $?"
       ];
     };
   };
