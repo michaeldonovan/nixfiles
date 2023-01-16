@@ -114,7 +114,7 @@ in
     enable = true;
     description = "Backup gitea";
     serviceConfig = {
-      ExecStart = "/home/michael/bin/gitea-archive.sh";
+      ExecStart = "/home/michael/bin/gitea-archive/gitea-archive.sh";
       User = "michael";
     };
   };
@@ -129,4 +129,23 @@ in
       Persistent = true;
     };
   };
+
+  systemd.services.xdarr-watchdog = {
+    enable = true;
+    serviceConfig = {
+      ExecStart = "/home/michael/bin/xdarr-watchdog.sh";
+      User = "michael";
+    };
+  };
+
+  systemd.timers.xdarr-watchdog = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      Unit = "xdarr-watchdog.service";
+      OnCalendar = "*:0/5";
+      Persistent = true;
+    };
+  };
+
 }
