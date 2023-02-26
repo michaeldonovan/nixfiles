@@ -9,7 +9,6 @@
     hddtemp
     ansible
     mediainfo
-    nixopsUnstable
     parted
   ];
 
