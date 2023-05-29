@@ -1,0 +1,320 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+
+[$character $all](bg:black)${custom.svn_branch}${custom.svn_dirty}${custom.svn_clean}[](fg:black) $fill [](fg:black)[ $cmd_duration$nix_shell$python$cmake$rust$docker_context$time $os](fg:white bg:black)
+$container$shell"""
+
+
+[custom.svn_branch]
+command = 'svn info | grep "^URL:" | egrep -o "(tags|branches)/[^/]+|trunk" '
+disabled = false
+symbol = ' '
+when = 'svn info | grep "^URL:" '
+style = 'fg:blue bg:black'
+format = '[](fg:bright-black bg:black)[$symbol ($output) ]($style)'
+
+[custom.svn_dirty]
+shell = ['bash']
+disabled = false
+symbol = ' '
+when = 'if [ -z $(svn status -q) ]; then return 1; fi'
+style = 'fg:red bg:black'
+format = '[$symbol]($style)'
+
+[custom.svn_clean]
+shell = ['bash']
+command = 'if [ -z "$(svn status -q)" ]; then echo "✓"; fi'
+disabled = false
+when = 'svn info | grep "^URL:" '
+style = 'fg:green bg:black'
+format = '[$output ]($style)'
+
+[os]
+disabled = false
+style = 'fg:black bold bg:bright-black'
+format = '[](fg:bright-black bg:black)[ $symbol]($style)'
+
+[shell]
+disabled = false
+style = 'bright-black bold'
+fish_indicator = ''
+powershell_indicator = 'PS>'
+tcsh_indicator = '\$'
+bash_indicator = '\$'
+zsh_indicator = '\$'
+cmd_indicator = 'cmd>'
+unknown_indicator = '??'
+
+[character]
+format = '$symbol [](fg:bright-black bg:black)'
+success_symbol = ' [I](fg:bold green bg:black)'
+error_symbol = '[  ](fg:black bg:bright-red)[](fg:bright-red bg:black) [I](fg:bold green bg:black)'
+vimcmd_symbol = ' [N](fg:bright-red bold bg:black)'
+vimcmd_replace_one_symbol = ' [R](bold purple bg:black)'
+vimcmd_replace_symbol = ' [R](bold purple bg:black)'
+vimcmd_visual_symbol = ' [V](bold yellow bg:black)'
+
+
+[username]
+style_user = 'fg:cyan bold bg:black'
+style_root = 'fg:red bold bg:black'
+format = '[$user]($style) '
+disabled = false
+show_always = true
+
+
+[hostname]
+format = '[ ](fg:white bg:black) [$hostname]($style) '
+style = 'fg:blue bold bg:black'
+ssh_only = true 
+
+
+[directory]
+read_only = " "
+style = 'fg:bright-black bg:black'
+before_repo_root_style = 'fg:bright-black bg:black'
+repo_root_style = 'fg:yellow bold bg:black'
+format = '[](fg:bright-black bg:black) [$path]($style)[$read_only]($read_only_style) '
+repo_root_format = '[](fg:bright-black bg:black) [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+truncate_to_repo = false
+
+[cmd_duration]
+min_time = 500
+format = '$duration [ ](fg:bright-black bg:black)'
+
+[time]
+format = '[$time]($style)'
+disabled = false
+use_12hr = true
+time_format = '%b %d %Y '
+style = "fg:bright-black bg:black"
+
+[fill]
+symbol = '-'
+
+
+[line_break]
+disabled = true
+
+[status]
+style = 'fg:red bold bg:black'
+
+[git_branch]
+symbol = " "
+style = 'fg:purple bg:black'
+format = '[](fg:bright-black bg:black) [$symbol$branch(:$remote_branch)]($style) '
+
+[git_commit]
+style = 'bg:black'
+
+[git_state]
+style = 'fg:yellow bg:black'
+
+
+[git_status]
+format = '[$all_status$ahead_behind]($style) $conflicted'
+style = ' bg:black'
+conflicted = '[=$count](fg:black bold bg:bright-red) '
+untracked = '[?$count ](fg:white bold bg:black)'
+modified = '[!$count ](fg:bright-blue bold bg:black)'
+staged = '[+$count ](fg:bright-green bold bg:black)'
+deleted = '[✘$count ](fg:red bold bg:black)'
+renamed = '[»$count ](fg:bright-blue bold bg:black)'
+stashed = '[$$count ](fg:white bold bg:black)'
+up_to_date = '[✓](fg:bright-green bold bg:black)'
+diverged = '[⇣$behind_count⇡$ahead_count ]](fg:yellow bold bg:black)'
+behind = '[⇣$count ](fg:yellow bold bg:black)'
+ahead = '[⇡$count ](fg:yellow  bold bg:black)'
+
+
+[aws]
+symbol = "  "
+style = 'bg:black'
+
+
+[buf]
+symbol = " "
+style = 'bg:black'
+
+
+[c]
+symbol = " "
+style = 'bg:black'
+disabled = true
+
+
+[conda]
+symbol = " "
+style = 'bg:black'
+
+
+[dart]
+symbol = " "
+style = 'bg:black'
+
+
+
+[docker_context]
+symbol = ""
+style = 'fg:blue bg:black'
+format = '[$symbol $context]($style)[  ](fg:bright-black bg:black)'
+
+
+[elixir]
+symbol = " "
+style = 'bg:black'
+
+
+[elm]
+symbol = " "
+style = 'bg:black'
+
+
+[fossil_branch]
+symbol = " "
+style = 'bg:black'
+
+
+
+
+[golang]
+symbol = " "
+style = 'bg:black'
+
+[guix_shell]
+symbol = " "
+style = 'bg:black'
+
+[haskell]
+symbol = " "
+style = 'bg:black'
+
+[haxe]
+symbol = "⌘ "
+style = 'bg:black'
+
+[hg_branch]
+symbol = " "
+style = 'bg:black'
+
+[java]
+symbol = " "
+style = 'bg:black'
+
+[julia]
+symbol = " "
+style = 'bg:black'
+
+[lua]
+symbol = " "
+style = 'bg:black'
+
+[memory_usage]
+symbol = " "
+style = 'bg:black'
+
+[meson]
+symbol = "喝 "
+style = 'bg:black'
+
+[nim]
+symbol = " "
+style = 'bg:black'
+
+[nodejs]
+symbol = " "
+style = 'bg:black'
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+style = 'bg:black'
+
+[pijul_channel]
+symbol = "🪺 "
+style = 'bg:black'
+
+[nix_shell]
+symbol = " "
+style = 'fg:cyan bg:black'
+format = '[$symbol$state( \($name\))]($style)[  ](fg:bright-black bg:black)'
+
+[cmake]
+symbol = "󰔷"
+disabled = false 
+style = 'fg:blue bg:black'
+format = '[$symbol $version]($style)[  ](fg:bright-black bg:black)'
+version_format = '${raw}'
+detect_extensions = [ 'cmake']
+
+[python]
+symbol = ""
+disabled = false
+style = 'fg:yellow bg:black'
+format = '[$symbol $version]($style)[  ](fg:bright-black bg:black)'
+version_format = '${raw}'
+
+[rust]
+symbol = ""
+style = 'fg:red bg:black'
+format = '[$symbol $version]($style)[  ](fg:bright-black bg:black)'
+version_format = '${raw}'
+
+[rlang]
+symbol = "ﳒ "
+style = 'bg:black'
+
+[ruby]
+symbol = " "
+style = 'bg:black'
+
+
+[scala]
+symbol = " "
+style = 'bg:black'
+
+[spack]
+symbol = "🅢  "
+style = 'bg:black'
+
+[ocaml]
+symbol = " "
+style = 'bg:black'

@@ -6,6 +6,7 @@
     ./git.nix
     ./vim.nix
     ./tmux.nix
+    ./starship.nix
   ];
   home.packages = with pkgs; [
     wget
