@@ -2,7 +2,9 @@
 {
   users.users.michael = {
     shell = pkgs.fish;
+    home = "/Users/michael";
   };
+
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -13,8 +15,6 @@
   # nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
 
-  services.nix-daemon.enable = true;
-
   programs.gnupg.agent = {
     enable = true;
   };
@@ -24,11 +24,9 @@
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
-  # services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
+  services.nix-daemon.enable = true;
+  nix.package = pkgs.nix;
 
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  # programs.zsh.enable = true;  # default shell on catalina
   programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
