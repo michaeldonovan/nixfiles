@@ -10,6 +10,12 @@
     enable = true;
     shellInit = ''
       set -g simple_ass_prompt_greeting . 
+      if [ $TERM = "xterm-kitty" ]
+          alias ssh="kitty +kitten ssh"
+      end
+      if [ test -e $HOME/miniconda3/bin/conda ]
+        eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+      end
     '';
 
     interactiveShellInit = ''
@@ -18,6 +24,8 @@
       if test -z "$TMUX"  && test -n "$SSH_CONNECTION" 
         tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
       end
+
+      starship init fish | source
     '';
 
     shellAbbrs = {
