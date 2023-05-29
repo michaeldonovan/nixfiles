@@ -10,7 +10,10 @@
     nixFlakes
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowBroken = true;
+
+  services.nix-daemon.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
