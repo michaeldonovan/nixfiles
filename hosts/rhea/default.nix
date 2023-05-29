@@ -10,10 +10,11 @@ in
   imports =
     [
       ./gpu.nix
+      ./borg.nix
     ];
 
   boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
+  #  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   networking.hostId = "5595a05c";
   boot.zfs.extraPools = [ "rhea" ];
   services.zfs = {
@@ -66,6 +67,11 @@ in
     fsType = "nfs4";
     options = [ "${nfsOpts}" ];
   };
+  fileSystems."/rendon/borgsrv" = {
+    device = "192.168.1.146:/mnt/rendon/borgsrv";
+    fsType = "nfs4";
+    options = [ "${nfsOpts}" ];
+  };
   /*
     fileSystems."/rendon/borg" = {
     device = "//192.168.1.146/borg";
@@ -87,6 +93,11 @@ in
     device = "192.168.1.146:/mnt/rendon/Documents";
     fsType = "nfs4";
     options = [ "${nfsOpts}" "ro" ];
+  };
+  fileSystems."/rendon/lancache" = {
+    device = "192.168.1.146:/mnt/rendon/lancache";
+    fsType = "nfs4";
+    options = [ "${nfsOpts}" ];
   };
 
 
