@@ -19,6 +19,11 @@
       end
 
       starship init fish | source
+
+      set OP_PLUGINS_PATH $HOME/.config/op/plugins.sh
+      if test -e $OP_PLUGINS_PATH
+        source $OP_PLUGINS_PATH
+      end
     '';
 
     shellAbbrs = {
