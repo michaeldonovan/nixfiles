@@ -9,13 +9,6 @@
   programs.fish = {
     enable = true;
     shellInit = ''
-      set -g simple_ass_prompt_greeting . 
-      if [ $TERM = "xterm-kitty" ]
-          alias ssh="kitty +kitten ssh"
-      end
-      if test -e $HOME/miniconda3/bin/conda 
-        eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-      end
     '';
 
     interactiveShellInit = ''
