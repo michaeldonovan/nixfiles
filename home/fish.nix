@@ -24,6 +24,12 @@
       if test -e $OP_PLUGINS_PATH
         source $OP_PLUGINS_PATH
       end
+
+      if type -qf lvim
+        abbr vim 'lvim'
+      else if type -qf spacevim
+        abbr vim 'lvim'
+      end
     '';
 
     shellAbbrs = {
@@ -31,7 +37,6 @@
       push = "git push";
       l = "ls -alskph";
       j = "fasd_cd -d";
-      vim = "spacevim";
       ytdl = "youtube-dl -i -f \"bestvideo+bestaudio\"";
       gc = "sudo nix-collect-garbage --delete-older-than 7d";
       up-compose = "docker-compose up -d";
