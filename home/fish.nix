@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }:
-
 {
   home.packages = with pkgs; [
     fish
@@ -41,6 +40,7 @@
       gc = "sudo nix-collect-garbage --delete-older-than 7d";
       up-compose = "docker-compose up -d";
       down-compose = "docker-compose down";
+      chat = "chatblade -i";
     };
 
     shellAliases = {

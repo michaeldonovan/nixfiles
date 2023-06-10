@@ -39,6 +39,8 @@
     keybase
     tea
     gcc
+    chatblade
+    shell_gpt
   ];
 
   programs.htop.enable = true;
