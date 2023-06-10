@@ -11,6 +11,8 @@ let
     speedtest-cli
     PyGithub
     tqdm
+    pytheory
+    jupyter
   ]);
 in
 {
