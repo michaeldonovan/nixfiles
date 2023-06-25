@@ -94,10 +94,15 @@ in
     fsType = "nfs4";
     options = [ "${nfsOpts}" "ro" ];
   };
-  fileSystems."/rendon/lancache" = {
-    device = "192.168.1.146:/mnt/rendon/lancache";
+  fileSystems."/rendon/Datasets" = {
+    device = "//192.168.1.146/Datasets";
+    fsType = "cifs";
+    options = [ "${smbOpts}" "ro" ];
+  };
+  fileSystems."/rendon/proxmox_config_backups" = {
+    device = "192.168.1.146:/mnt/rendon/proxmox_config_backups";
     fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    options = [ "${nfsOpts}" "ro" ];
   };
 
 
