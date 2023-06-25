@@ -29,6 +29,8 @@
       else if type -qf spacevim
         abbr vim 'spacevim'
       end
+
+      fish_add_path $HOME/.local/bin
     '';
 
     shellAbbrs = {
