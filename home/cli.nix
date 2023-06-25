@@ -41,6 +41,7 @@
     gcc
     chatblade
     shell_gpt
+    fd
   ];
 
   programs.htop.enable = true;
