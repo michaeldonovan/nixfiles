@@ -27,7 +27,7 @@
       if type -qf lvim
         abbr vim 'lvim'
       else if type -qf spacevim
-        abbr vim 'lvim'
+        abbr vim 'spacevim'
       end
     '';
 
