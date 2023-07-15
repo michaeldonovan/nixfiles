@@ -3,7 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto,soft";
+  smbCredentialsFile = "/secrets/smb-secrets";
+  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},${nfsOpts}";
+in
 {
   imports =
     [
@@ -81,6 +85,12 @@
       OnCalendar = "daily";
       Persistent = true;
     };
+  };
+
+  fileSystems."/mnt/storagebox" = {
+    device = "//sb1.mdonovan.dev/u354855-sub1";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
 
 }
