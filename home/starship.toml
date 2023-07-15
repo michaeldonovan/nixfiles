@@ -1,9 +1,10 @@
-"$schema" = 'https://starship.rs/config-schema.json'
 
+"$schema" = 'https://starship.rs/config-schema.json'
 format = """
 
-[$character $all](bg:black)${custom.svn_branch}${custom.svn_dirty}${custom.svn_clean}[](fg:black) $fill [](fg:black)[ $cmd_duration$nix_shell$python$cmake$rust$docker_context$time $os](fg:white bg:black)
+[$character $all](bg:black)${custom.svn_branch}${custom.svn_dirty}${custom.svn_clean}$fill[  ](fg:bright-black bg:black)[$cmd_duration$nix_shell$aws$nodejs$conda$python$cmake$rust$docker_context$time$os](fg:white bg:black)
 $container$shell"""
+
 
 
 [custom.svn_branch]
@@ -32,8 +33,8 @@ format = '[$output ]($style)'
 
 [os]
 disabled = false
-style = 'fg:black bold bg:bright-black'
-format = '[](fg:bright-black bg:black)[ $symbol]($style)'
+style = 'fg:bright-black bold bg:black'
+format = '[$symbol]($style)'
 
 [shell]
 disabled = false
@@ -79,19 +80,22 @@ format = '[](fg:bright-black bg:black) [$path]($style)[$read_only]($read_only
 repo_root_format = '[](fg:bright-black bg:black) [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
 truncate_to_repo = false
 
+use_os_path_sep = true
+
 [cmd_duration]
 min_time = 500
-format = '$duration [ ](fg:bright-black bg:black)'
+format = '$duration[  ](fg:bright-black bg:black)'
 
 [time]
-format = '[$time]($style)'
+format = '[$time]($style)[  ](fg:bright-black bg:black)'
 disabled = false
 use_12hr = true
-time_format = '%b %d %Y '
-style = "fg:bright-black bg:black"
+time_format = '%b %d %Y'
+style = "fg:black-black bg:bright"
 
 [fill]
-symbol = '-'
+symbol = ' '
+style = "fg:bright-black bg:black"
 
 
 [line_break]
@@ -129,8 +133,9 @@ ahead = '[⇡$count ](fg:yellow  bold bg:black)'
 
 
 [aws]
-symbol = "  "
-style = 'bg:black'
+symbol = ""
+style = 'fg:yellow bg:black'
+format = '[$symbol($profile )(\[$duration\] )]($style)[ ](fg:bright-black bg:black)'
 
 
 [buf]
@@ -145,8 +150,9 @@ disabled = true
 
 
 [conda]
-symbol = " "
-style = 'bg:black'
+symbol = "󱔎 "
+style = 'bg:black fg:yellow'
+format = '[$symbol$environment]($style)[  ](fg:bright-black bg:black)'
 
 
 [dart]
@@ -224,7 +230,8 @@ style = 'bg:black'
 
 [nodejs]
 symbol = " "
-style = 'bg:black'
+style = 'bg:black fg:green'
+format = '[$symbol$version]($style)[  ](fg:bright-black bg:black)'
 
 [os.symbols]
 Alpine = " "
