@@ -1,5 +1,4 @@
 { config, ... }:
-
 let
   nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto,soft";
   smbCredentialsFile = "/secrets/smb-secrets";
@@ -59,8 +58,8 @@ in
   };
   fileSystems."/rendon/Backups" = {
     device = "192.168.1.146:/mnt/rendon/Backups";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/borg" = {
     device = "192.168.1.146:/mnt/rendon/borg";
@@ -81,8 +80,8 @@ in
   */
   fileSystems."/rendon/Pictures" = {
     device = "192.168.1.146:/mnt/rendon/Pictures";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/Music" = {
     device = "192.168.1.146:/mnt/rendon/Music";
@@ -91,8 +90,8 @@ in
   };
   fileSystems."/rendon/Documents" = {
     device = "192.168.1.146:/mnt/rendon/Documents";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" "ro" ];
+    fsType = "cifs";
+    options = [ "${smbOpts}" "ro" ];
   };
   fileSystems."/rendon/Datasets" = {
     device = "//192.168.1.146/Datasets";
@@ -101,8 +100,8 @@ in
   };
   fileSystems."/rendon/proxmox_config_backups" = {
     device = "192.168.1.146:/mnt/rendon/proxmox_config_backups";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" "ro" ];
+    fsType = "cifs";
+    options = [ "${smbOpts}" "ro" ];
   };
 
 
