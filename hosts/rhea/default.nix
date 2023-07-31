@@ -12,6 +12,7 @@ in
       ./borg.nix
     ];
 
+  boot.loader.grub.device = "/dev/sdb";
   boot.supportedFilesystems = [ "zfs" ];
   #  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   networking.hostId = "5595a05c";
@@ -57,7 +58,7 @@ in
     options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Backups" = {
-    device = "192.168.1.146:/mnt/rendon/Backups";
+    device = "//192.168.1.146/Backups";
     fsType = "cifs";
     options = [ "${smbOpts}" ];
   };
@@ -80,8 +81,8 @@ in
   */
   fileSystems."/rendon/Pictures" = {
     device = "192.168.1.146:/mnt/rendon/Pictures";
-    fsType = "cifs";
-    options = [ "${smbOpts}" ];
+    fsType = "nfs4";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Music" = {
     device = "192.168.1.146:/mnt/rendon/Music";
@@ -89,7 +90,7 @@ in
     options = [ "${nfsOpts}" "ro" ];
   };
   fileSystems."/rendon/Documents" = {
-    device = "192.168.1.146:/mnt/rendon/Documents";
+    device = "//192.168.1.146/Documents";
     fsType = "cifs";
     options = [ "${smbOpts}" "ro" ];
   };
@@ -99,7 +100,7 @@ in
     options = [ "${smbOpts}" "ro" ];
   };
   fileSystems."/rendon/proxmox_config_backups" = {
-    device = "192.168.1.146:/mnt/rendon/proxmox_config_backups";
+    device = "//192.168.1.146/proxmox_config_backups";
     fsType = "cifs";
     options = [ "${smbOpts}" "ro" ];
   };
