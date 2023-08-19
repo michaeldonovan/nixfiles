@@ -14,7 +14,7 @@
     {
       package = pkgs.nixUnstable;
       settings.auto-optimise-store = true;
-      nix.gc = {
+      gc = {
         automatic = true;
         dates = "weekly";
         options = "--delete-older-than 7d";
@@ -22,9 +22,9 @@
       extraOptions = ''
         experimental-features = nix-command flakes
       '';
-    }
+    };
 
-      nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-9.4.4"
   ];
