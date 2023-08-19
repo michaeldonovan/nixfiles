@@ -43,19 +43,19 @@ in
   services.rpcbind.enable = true; # needed for NFS
 
   fileSystems."/rendon/Plex" = {
-    device = "192.168.1.146:/mnt/rendon/Plex";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    device = "//192.168.1.146/Plex";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/Downloads" = {
-    device = "192.168.1.146:/mnt/rendon/Downloads";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    device = "//192.168.1.146/Downloads";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/Books" = {
-    device = "192.168.1.146:/mnt/rendon/Books";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    device = "//192.168.1.146/Books";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/Backups" = {
     device = "//192.168.1.146/Backups";
@@ -80,14 +80,14 @@ in
     };
   */
   fileSystems."/rendon/Pictures" = {
-    device = "192.168.1.146:/mnt/rendon/Pictures";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    device = "//192.168.1.146/Pictures";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/Music" = {
-    device = "192.168.1.146:/mnt/rendon/Music";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" "ro" ];
+    device = "//192.168.1.146/Music";
+    fsType = "cifs";
+    options = [ "${smbOpts}" "ro" ];
   };
   fileSystems."/rendon/Documents" = {
     device = "//192.168.1.146/Documents";
