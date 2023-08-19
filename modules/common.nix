@@ -9,13 +9,22 @@
 
   networking.enableIPv6 = true;
 
-  nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-  nixpkgs.config.allowUnfree = true;
+
+  nix =
+    {
+      package = pkgs.nixUnstable;
+      settings.auto-optimise-store = true;
+      nix.gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
+      extraOptions = ''
+        experimental-features = nix-command flakes
+      '';
+    }
+
+      nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-9.4.4"
   ];
