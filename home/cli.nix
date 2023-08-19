@@ -42,9 +42,17 @@
     chatblade
     shell_gpt
     fd
+    nix-prefetch-github
   ];
 
   programs.htop.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   home.sessionVariables = {
     DO_NOT_TRACK = 1;
