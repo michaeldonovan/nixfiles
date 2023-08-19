@@ -37,7 +37,7 @@
       pull = "git pull";
       push = "git push";
       l = "ls -alskph";
-      j = "fasd_cd -d";
+      j = "z";
       ytdl = "youtube-dl -i -f \"bestvideo+bestaudio\"";
       gc = "sudo nix-collect-garbage --delete-older-than 7d";
       up-compose = "docker-compose up -d";
@@ -92,6 +92,15 @@
           repo = "github-copilot-cli.fish";
           rev = "ccb6367bbb3055ea19b9ff0eac1ccf1c5e86419a";
           sha256 = "cnmxvnG3WN2uqtt1aUEf0OFJulQSpFd3RJeeVKpDI9Y=";
+        };
+      }
+      {
+        name = "z";
+        src = pkgs.fetchFromGitHub {
+          owner = "jethrokuan";
+          repo = "z";
+          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
+          sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
         };
       }
     ];
