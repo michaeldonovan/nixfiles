@@ -63,14 +63,9 @@ in
     options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/borg" = {
-    device = "192.168.1.146:/mnt/rendon/borg";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
-  };
-  fileSystems."/rendon/borgsrv" = {
-    device = "192.168.1.146:/mnt/rendon/borgsrv";
-    fsType = "nfs4";
-    options = [ "${nfsOpts}" ];
+    device = "//192.168.1.146/borg";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
   /*
     fileSystems."/rendon/borg" = {
@@ -160,6 +155,26 @@ in
     timerConfig = {
       Unit = "xdarr-watchdog.service";
       OnCalendar = "*:0/5";
+      Persistent = true;
+    };
+  };
+
+
+  # photoprism backups
+  systemd.services.photoprism-backup = {
+    enable = true;
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/docker compose -f /docker/photoprism/docker-compose.yml exec photoprism photoprism backup -i -f";
+      User = "michael";
+    };
+  };
+
+  systemd.timers.photoprism-backup = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      Unit = "photoprism-backup.service";
+      OnCalendar = "*-*-* 00:00:00";
       Persistent = true;
     };
   };
