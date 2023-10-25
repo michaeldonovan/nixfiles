@@ -27,6 +27,7 @@ in
 
   networking.hostName = "algiers"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.nameservers = [ "1.1.1.1" "1.1.0.0" ];
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
