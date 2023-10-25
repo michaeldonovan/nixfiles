@@ -7,8 +7,9 @@ in
     [
     ];
 
+  boot.loader.grub.device = "/dev/sda";
   boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
+  # boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   networking.hostId = "22c6e578";
   boot.zfs.extraPools = [ "orchid" ];
   services.zfs = {
