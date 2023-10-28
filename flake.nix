@@ -163,7 +163,6 @@
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
-            ./modules/distcc.nix
 
             home-manager.nixosModule
           ];
