@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto,soft";
+  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=30s,soft,_netdev";
   smbCredentialsFile = "/secrets/smb-secrets";
   smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},${nfsOpts}";
 
@@ -48,9 +48,9 @@ in
     options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/Downloads" = {
-    device = "//192.168.1.146/Downloads";
-    fsType = "cifs";
-    options = [ "${smbOpts}" ];
+    device = "192.168.1.146:/mnt/rendon/Downloads";
+    fsType = "nfs4";
+    options = [ "${nfsOpts}" ];
   };
   fileSystems."/rendon/Books" = {
     device = "//192.168.1.146/Books";
@@ -63,9 +63,9 @@ in
     options = [ "${smbOpts}" ];
   };
   fileSystems."/rendon/borg" = {
-    device = "//192.168.1.146/borg";
-    fsType = "cifs";
-    options = [ "${smbOpts}" ];
+    device = "192.168.1.146:/mnt/rendon/borg";
+    fsType = "nfs4";
+    options = [ "${nfsOpts}" ];
   };
   /*
     fileSystems."/rendon/borg" = {
