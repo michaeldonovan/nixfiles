@@ -43,6 +43,7 @@
     shell_gpt
     fd
     nix-prefetch-github
+    sysbench
   ];
 
   programs.htop.enable = true;
