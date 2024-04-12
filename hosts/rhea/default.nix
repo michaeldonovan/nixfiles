@@ -1,9 +1,8 @@
 { config, ... }:
 let
-  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=30s,soft,_netdev";
+  nfsOpts = "_netdev";
   smbCredentialsFile = "/secrets/smb-secrets";
-  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},${nfsOpts}";
-
+  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},${nfsOpts},mfsymlinks";
 in
 {
   imports =
@@ -38,6 +37,10 @@ in
         recursive = true;
       };
     };
+  };
+
+  virtualisation.docker.daemon.settings = {
+    data-root = "/rhea/dockersys";
   };
 
   services.rpcbind.enable = true; # needed for NFS
