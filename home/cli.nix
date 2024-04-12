@@ -32,7 +32,7 @@
     gh
     pre-commit
     rsync
-    cargo
+    rustup
     thefuck
     lazygit
     lazydocker
@@ -44,6 +44,7 @@
     fd
     nix-prefetch-github
     sysbench
+    pkg-config
   ];
 
   programs.htop.enable = true;
