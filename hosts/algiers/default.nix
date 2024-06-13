@@ -4,7 +4,7 @@
 
 { config, pkgs, ... }:
 let
-  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto,soft";
+  nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto";
   smbCredentialsFile = "/secrets/smb-secrets";
   smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},${nfsOpts}";
 in
@@ -91,7 +91,7 @@ in
   fileSystems."/mnt/storagebox" = {
     device = "//sb1.mdonovan.dev/u354855-sub1";
     fsType = "cifs";
-    options = [ "${smbOpts}" ];
+    options = [ "${smbOpts}" "iocharset=utf8" ];
   };
 
 }
