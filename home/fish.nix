@@ -39,7 +39,7 @@
       l = "ls -alskph";
       j = "z";
       ytdl = "youtube-dl -i -f \"bestvideo+bestaudio\"";
-      gc = "sudo nix-collect-garbage --delete-older-than 7d";
+      gc = "nix-collect-garbage --delete-older-than 7d";
       up-compose = "docker-compose up -d";
       down-compose = "docker-compose down";
       chat = "chatblade -i";
