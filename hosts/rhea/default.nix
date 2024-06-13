@@ -11,7 +11,7 @@ in
       ./borg.nix
     ];
 
-  boot.loader.grub.device = "/dev/sdb";
+  boot.loader.grub.device = "/dev/sda";
   boot.supportedFilesystems = [ "zfs" ];
   #  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   networking.hostId = "5595a05c";
