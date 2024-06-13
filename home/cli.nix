@@ -40,7 +40,6 @@
     tea
     gcc
     chatblade
-    shell_gpt
     fd
     nix-prefetch-github
     sysbench
