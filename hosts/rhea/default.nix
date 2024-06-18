@@ -167,7 +167,7 @@ in
   systemd.services.photoprism-backup = {
     enable = true;
     serviceConfig = {
-      ExecStart = "/run/current-system/sw/bin/docker compose -f /docker/photoprism/docker-compose.yml exec photoprism photoprism backup -i -f";
+      ExecStart = "/run/current-system/sw/bin/docker compose -f /rhea/docker/photoprism/docker-compose.yml exec photoprism photoprism backup -i -f";
       User = "michael";
     };
   };
