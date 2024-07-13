@@ -43,6 +43,7 @@
       up-compose = "docker-compose up -d";
       down-compose = "docker-compose down";
       chat = "chatblade -i";
+      g = "git";
     };
 
     shellAliases = {
