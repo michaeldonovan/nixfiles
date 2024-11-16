@@ -117,6 +117,7 @@
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
+            ./modules/semaphore.nix
 
             home-manager.nixosModule
           ];
@@ -138,6 +139,7 @@
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/nofirewall.nix
+            ./modules/semaphore.nix
 
             home-manager.nixosModule
           ];
@@ -160,6 +162,7 @@
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
+            ./modules/semaphore.nix
 
             home-manager.nixosModule
           ];
@@ -173,6 +176,7 @@
             ./modules/common.nix
             ./modules/docker.nix
 
+            ./modules/semaphore.nix
             home-manager.nixosModule
           ];
         };
