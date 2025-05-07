@@ -44,6 +44,8 @@
     nix-prefetch-github
     sysbench
     pkg-config
+    jq
+    regclient
   ];
 
   programs.htop.enable = true;
