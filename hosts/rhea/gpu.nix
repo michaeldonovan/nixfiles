@@ -8,6 +8,10 @@
     docker = {
       package = pkgs.docker_25;
       daemon.settings.features.cdi = true;
+      daemon.settings = {
+        runtimes.nvidia.path = "${pkgs.nvidia-docker}/bin/nvidia-container-runtime";
+        exec-opts = [ "native.cgroupdriver=cgroupfs" ];
+      };
     };
   };
 
