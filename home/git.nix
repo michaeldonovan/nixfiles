@@ -4,7 +4,7 @@
     enable = true;
     userName = "Michael Donovan";
     userEmail = "michael@mdonovan.dev";
-    delta.enable = true;
+    difftastic.enable = true;
     ignores = [ "*~" "*.swp" ".nvimlog" ".DS_Store" ];
     signing = {
       signByDefault = true;
