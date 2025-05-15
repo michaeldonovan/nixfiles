@@ -144,19 +144,19 @@ in
     };
   };
 
-  systemd.services.xdarr-watchdog = {
+  systemd.services.plex-watchdog = {
     enable = true;
     serviceConfig = {
-      ExecStart = "/home/michael/bin/xdarr-watchdog.sh";
+      ExecStart = "/home/michael/bin/plex-watchdog.sh";
       User = "michael";
     };
   };
 
-  systemd.timers.xdarr-watchdog = {
+  systemd.timers.plex-watchdog = {
     enable = true;
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      Unit = "xdarr-watchdog.service";
+      Unit = "plex-watchdog.service";
       OnCalendar = "*:0/5";
       Persistent = true;
     };
