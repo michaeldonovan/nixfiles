@@ -39,7 +39,6 @@
     keybase
     tea
     gcc
-    chatblade
     fd
     nix-prefetch-github
     sysbench
