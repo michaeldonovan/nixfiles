@@ -8,6 +8,19 @@
   programs.fish = {
     enable = true;
     shellInit = ''
+      if uname | grep -q Darwin
+        # >>> mamba initialize >>>
+        # !! Contents within this block are managed by 'mamba init' !!
+        set -gx MAMBA_EXE "/opt/homebrew/bin/micromamba"
+        set -gx MAMBA_ROOT_PREFIX "$HOME/micromamba"
+        test -e $MAMBA_EXE; and $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
+        # <<< mamba initialize <<<
+
+        test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+      end
+
+
+
     '';
 
     interactiveShellInit = ''
@@ -42,7 +55,6 @@
       gc = "nix-collect-garbage --delete-older-than 7d";
       up-compose = "docker-compose up -d";
       down-compose = "docker-compose down";
-      chat = "chatblade -i";
       g = "git";
     };
 
