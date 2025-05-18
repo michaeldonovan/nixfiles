@@ -14,7 +14,7 @@
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -45,7 +45,6 @@
             ./modules/monitor-brightness.nix
             ./modules/audio.nix
             ./modules/docker.nix
-            ./modules/fonts.nix
             ./modules/tablet.nix
             ./modules/zabbix-agent.nix
 
@@ -74,8 +73,6 @@
           modules = [
             ./hosts/MacBook
             ./hosts/MacBook/home
-
-            ./modules/fonts.nix
 
             home-manager.darwinModule
           ];
