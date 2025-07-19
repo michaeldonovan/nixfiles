@@ -27,7 +27,7 @@ in
 
   networking.hostName = "algiers"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.nameservers = [ "1.1.1.1" "1.1.0.0" ];
+  # networking.nameservers = [ "1.1.1.1" "1.1.0.0" ];
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -92,6 +92,16 @@ in
     device = "//sb1.mdonovan.dev/u354855-sub1";
     fsType = "cifs";
     options = [ "${smbOpts}" "iocharset=utf8" ];
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      dns = [
+        "1.1.1.1"
+        "1.1.0.0"
+      ];
+    };
   };
 
 }

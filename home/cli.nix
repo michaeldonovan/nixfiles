@@ -45,6 +45,7 @@
     pkg-config
     jq
     regclient
+    mariadb-client
   ];
 
   programs.htop.enable = true;
