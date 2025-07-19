@@ -63,12 +63,6 @@
     };
 
     functions = {
-      docker-update.body = ''
-        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-                           containrrr/watchtower \
-                                              --run-once
-                                              docker image prune -af
-      '';
       fish_title.body = ''
         if [ $_ != "fish" ]
             echo $_
