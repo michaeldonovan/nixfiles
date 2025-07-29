@@ -39,7 +39,7 @@ format = '[$symbol]($style)'
 [shell]
 disabled = false
 style = 'bright-black bold'
-fish_indicator = ''
+fish_indicator = ''
 powershell_indicator = 'PS>'
 tcsh_indicator = '\$'
 bash_indicator = '\$'
