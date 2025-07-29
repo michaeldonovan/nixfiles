@@ -24,7 +24,7 @@
       inherit self inputs;
 
       sharedOverlays = [
-        nur.overlay
+        nur.overlays.default
       ];
 
       channelsConfig.allowUnfree = true;
