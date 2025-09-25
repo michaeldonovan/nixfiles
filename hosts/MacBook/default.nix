@@ -24,8 +24,9 @@
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
+
+  system.primaryUser = "michael";
 
   programs.fish.enable = true;
 

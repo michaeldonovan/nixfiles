@@ -1,11 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     musnix.url = "github:musnix/musnix";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,7 +14,7 @@
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -49,7 +49,7 @@
             ./modules/zabbix-agent.nix
 
             musnix.nixosModules.musnix
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
 
             ({ pkgs, ... }:
               let
@@ -74,7 +74,7 @@
             ./hosts/MacBook
             ./hosts/MacBook/home
 
-            home-manager.darwinModule
+            home-manager.darwinModules.home-manager
           ];
         };
 
@@ -93,7 +93,7 @@
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
 
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
           ];
         };
 
@@ -116,7 +116,7 @@
             ./modules/summit-user.nix
             ./modules/semaphore.nix
 
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
           ];
         };
 
@@ -138,7 +138,7 @@
             ./modules/nofirewall.nix
             ./modules/semaphore.nix
 
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
           ];
         };
 
@@ -161,7 +161,7 @@
             ./modules/summit-user.nix
             ./modules/semaphore.nix
 
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
           ];
         };
 
@@ -174,7 +174,7 @@
             ./modules/docker.nix
 
             ./modules/semaphore.nix
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
           ];
         };
       };
