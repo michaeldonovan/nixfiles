@@ -6,7 +6,7 @@
 
   virtualisation.docker = {
     enable = true;
-    liveRestore = false;
+    liveRestore = true;
     autoPrune = {
       enable = true;
     };

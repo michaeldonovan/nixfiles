@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   nfsOpts = "_netdev";
   smbCredentialsFile = "/secrets/smb-secrets";
@@ -10,6 +10,9 @@ in
       ./gpu.nix
       ./borg.nix
     ];
+  environment.systemPackages = with pkgs; [
+    ffmpeg
+  ];
 
   boot.loader.grub.device = "/dev/sda";
   boot.supportedFilesystems = [ "zfs" ];
