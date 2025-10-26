@@ -46,6 +46,7 @@
     jq
     regclient
     mariadb-client
+    fio
   ];
 
   programs.htop.enable = true;
