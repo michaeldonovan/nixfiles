@@ -12,6 +12,7 @@ in
     ];
   environment.systemPackages = with pkgs; [
     ffmpeg
+    mkvtoolnix
   ];
 
   boot.loader.grub.device = "/dev/sda";
