@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 let
-  nfsOpts = "_netdev";
+  nfsOpts = "nfsvers=4.2,_netdev,nconnect=16,timeo=600,retrans=2,sec=sys,relatime,noauto,x-systemd.automount";
   smbCredentialsFile = "/secrets/smb-secrets";
-  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},${nfsOpts},mfsymlinks";
+  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},_netdev,mfsymlinks,relatime";
 in
 {
   imports =
@@ -16,7 +16,12 @@ in
   ];
 
   boot.loader.grub.device = "/dev/sda";
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" "nfs" "cifs" ];
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10;
+  };
+
   #  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   networking.hostId = "5595a05c";
   boot.zfs.extraPools = [ "rhea" ];
@@ -106,6 +111,8 @@ in
     fsType = "cifs";
     options = [ "${smbOpts}" "ro" ];
   };
+
+
 
 
   systemd.services.pfsense-backup = {
