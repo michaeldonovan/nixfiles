@@ -29,5 +29,17 @@ in
     openssh.authorizedKeys.keys = ssh-keys;
   };
 
+  users.users.n8n = {
+    isNormalUser = true;
+    home = "/home/n8n";
+    extraGroups = [
+      "docker"
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPs/pCiwaWX3pUG8kStQycqzz4mtGgQI0fNTyiOi4AY3"
+
+    ];
+  };
+
   environment.homeBinInPath = true;
 }
