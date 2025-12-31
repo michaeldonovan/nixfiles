@@ -6,7 +6,7 @@
 
   virtualisation = {
     docker = {
-      package = pkgs.docker_25;
+      # package = pkgs.docker_26;
       daemon.settings.features.cdi = true;
       daemon.settings = {
         runtimes.nvidia.path = "${pkgs.nvidia-docker}/bin/nvidia-container-runtime";
@@ -22,10 +22,14 @@
   };
   hardware.nvidia = {
     nvidiaPersistenced = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
     modesetting.enable = true;
     powerManagement.enable = true;
     open = false;
   };
-  boot.kernelParams = [ "pcie_aspm=off" ];
+
+  systemd.services.docker = {
+    after = [ "nvidia-persistenced.service" ];
+    wants = [ "nvidia-persistenced.service" ];
+  };
 }
