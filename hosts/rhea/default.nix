@@ -2,7 +2,7 @@
 let
   nfsOpts = "nfsvers=4.2,_netdev,nconnect=16,timeo=600,retrans=2,sec=sys,relatime,noauto,x-systemd.automount";
   smbCredentialsFile = "/secrets/smb-secrets";
-  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},_netdev,mfsymlinks,relatime";
+  smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},_netdev,mfsymlinks,noatime,cache=strict,actimeo=1,nosharesock,serverino,hard,intr";
 in
 {
   imports =
