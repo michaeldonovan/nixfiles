@@ -9,7 +9,7 @@ let
     paramiko
     autopep8
     speedtest-cli
-    PyGithub
+    pygithub
     tqdm
     #    pytheory
     jupyter

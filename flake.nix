@@ -1,11 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     musnix.url = "github:musnix/musnix";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    claude-code.url = "github:sadjow/claude-code-nix";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,12 +16,12 @@
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, musnix, nix-darwin, ... }:
+  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, musnix, nix-darwin, vscode-server, claude-code, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -115,7 +117,9 @@
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
             ./modules/semaphore.nix
+            ./modules/vscode-server.nix
 
+            vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
           ];
         };
@@ -137,7 +141,9 @@
             ./modules/docker.nix
             ./modules/nofirewall.nix
             ./modules/semaphore.nix
+            ./modules/vscode-server.nix
 
+            vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
           ];
         };
@@ -150,6 +156,12 @@
             vlanAddr = "192.168.2.142";
           };
           modules = [
+            ({ pkgs, ... }:
+              {
+                nixpkgs.overlays = [ claude-code.overlays.default ];
+                environment.systemPackages = [ pkgs.claude-code ]; # or pkgs.claude-code-bun
+              })
+
             ./hosts/rhea
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
@@ -160,7 +172,9 @@
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
             ./modules/semaphore.nix
+            ./modules/vscode-server.nix
 
+            vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
           ];
         };

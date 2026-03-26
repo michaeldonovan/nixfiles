@@ -33,7 +33,6 @@
     pre-commit
     rsync
     rustup
-    thefuck
     lazygit
     lazydocker
     keybase
@@ -45,7 +44,6 @@
     pkg-config
     jq
     regclient
-    mariadb-client
     fio
   ];
 
