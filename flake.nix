@@ -27,6 +27,15 @@
 
       sharedOverlays = [
         nur.overlays.default
+        (final: prev:
+          if prev.stdenv.hostPlatform.isDarwin then {
+            direnv = prev.direnv.overrideAttrs (old: {
+              postPatch = (old.postPatch or "") + ''
+                substituteInPlace GNUmakefile \
+                  --replace "-linkmode=external" "-linkmode=internal"
+              '';
+            });
+          } else { })
       ];
 
       channelsConfig.allowUnfree = true;

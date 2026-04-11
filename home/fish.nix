@@ -13,7 +13,7 @@
         # !! Contents within this block are managed by 'mamba init' !!
         set -gx MAMBA_EXE "/opt/homebrew/bin/micromamba"
         set -gx MAMBA_ROOT_PREFIX "$HOME/micromamba"
-        test -e $MAMBA_EXE; and $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
+        test -e $MAMBA_EXE; and $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
         # <<< mamba initialize <<<
 
         test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
@@ -25,6 +25,8 @@
 
     interactiveShellInit = ''
       set -gx GPG_TTY (tty)
+
+      eval (ssh-agent -c)
       
       if test -z "$TMUX"  && test -n "$SSH_CONNECTION" 
         tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux

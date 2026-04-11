@@ -44,7 +44,7 @@
     pkg-config
     jq
     regclient
-    fio
+    nixfmt
   ];
 
   programs.htop.enable = true;

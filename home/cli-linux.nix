@@ -10,6 +10,7 @@
     ansible
     mediainfo
     parted
+    fio
   ];
 
   services.gpg-agent = {
