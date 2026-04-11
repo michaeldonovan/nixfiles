@@ -2,9 +2,14 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
-    musnix.url = "github:musnix/musnix";
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
-    claude-code.url = "github:sadjow/claude-code-nix";
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +36,6 @@
     , utils
     , nur
     , home-manager
-    , musnix
     , nix-darwin
     , vscode-server
     , claude-code
@@ -69,43 +73,6 @@
       hostDefaults.system = "x86_64-linux";
 
       hosts = {
-        monolith = {
-          modules = [
-            nvchadHmModule
-            ./hosts/monolith
-            ./hosts/monolith/home
-
-            ./modules/common.nix
-            ./modules/gnome.nix
-            ./modules/yubikey.nix
-            ./modules/wine.nix
-            ./modules/samba.nix
-            ./modules/monitor-brightness.nix
-            ./modules/audio.nix
-            ./modules/docker.nix
-            ./modules/tablet.nix
-            ./modules/zabbix-agent.nix
-
-            musnix.nixosModules.musnix
-            home-manager.nixosModules.home-manager
-
-            (
-              { pkgs, ... }:
-              let
-                nur-no-pkgs = import nur {
-                  nurpkgs = import nixpkgs { system = "x86_64-linux"; };
-                };
-              in
-              {
-                imports = [
-                  nur-no-pkgs.repos.ilya-fedin.modules.flatpak-fonts
-                  nur-no-pkgs.repos.ilya-fedin.modules.flatpak-icons
-                ];
-              }
-            )
-          ];
-        };
-
         MacBook = {
           system = "aarch64-darwin";
           output = "darwinConfigurations";
