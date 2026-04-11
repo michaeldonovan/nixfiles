@@ -20,6 +20,9 @@
           "/opt/homebrew/bin"
           "/Users/michael/.local/bin"
           "/Users/michael/bin"
+          "/Users/michael/.nix-profile/bin"
+          "/run/current-system/sw/bin/nix"
+
         ];
 
         programs.zsh.enable = true;
