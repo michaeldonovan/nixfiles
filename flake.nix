@@ -5,6 +5,10 @@
     musnix.url = "github:musnix/musnix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     claude-code.url = "github:sadjow/claude-code-nix";
+    nix4nvchad = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -21,21 +25,43 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, utils, nur, home-manager, musnix, nix-darwin, vscode-server, claude-code, ... }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , utils
+    , nur
+    , home-manager
+    , musnix
+    , nix-darwin
+    , vscode-server
+    , claude-code
+    , nix4nvchad
+    , ...
+    }:
+    let
+      nvchadHmModule = {
+        home-manager.sharedModules = [ nix4nvchad.homeManagerModule ];
+      };
+    in
     utils.lib.mkFlake {
       inherit self inputs;
 
       sharedOverlays = [
         nur.overlays.default
-        (final: prev:
-          if prev.stdenv.hostPlatform.isDarwin then {
-            direnv = prev.direnv.overrideAttrs (old: {
-              postPatch = (old.postPatch or "") + ''
-                substituteInPlace GNUmakefile \
-                  --replace "-linkmode=external" "-linkmode=internal"
-              '';
-            });
-          } else { })
+        (
+          final: prev:
+            if prev.stdenv.hostPlatform.isDarwin then
+              {
+                direnv = prev.direnv.overrideAttrs (old: {
+                  postPatch = (old.postPatch or "") + ''
+                    substituteInPlace GNUmakefile \
+                      --replace "-linkmode=external" "-linkmode=internal"
+                  '';
+                });
+              }
+            else
+              { }
+        )
       ];
 
       channelsConfig.allowUnfree = true;
@@ -45,6 +71,7 @@
       hosts = {
         monolith = {
           modules = [
+            nvchadHmModule
             ./hosts/monolith
             ./hosts/monolith/home
 
@@ -62,7 +89,8 @@
             musnix.nixosModules.musnix
             home-manager.nixosModules.home-manager
 
-            ({ pkgs, ... }:
+            (
+              { pkgs, ... }:
               let
                 nur-no-pkgs = import nur {
                   nurpkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -73,7 +101,8 @@
                   nur-no-pkgs.repos.ilya-fedin.modules.flatpak-fonts
                   nur-no-pkgs.repos.ilya-fedin.modules.flatpak-icons
                 ];
-              })
+              }
+            )
           ];
         };
 
@@ -82,6 +111,7 @@
           output = "darwinConfigurations";
           builder = nix-darwin.lib.darwinSystem;
           modules = [
+            nvchadHmModule
             ./hosts/MacBook
             ./hosts/MacBook/home
 
@@ -97,6 +127,7 @@
             vlanAddr = "192.168.2.150";
           };
           modules = [
+            nvchadHmModule
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
@@ -116,6 +147,7 @@
             vlanAddr = "192.168.2.158";
           };
           modules = [
+            nvchadHmModule
             ./hosts/orchid
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
@@ -141,6 +173,7 @@
             vlanAddr = "192.168.2.159";
           };
           modules = [
+            nvchadHmModule
             ./hosts/zabbix
             ./hosts/zabbix/home
             ./hosts/proxmox-template
@@ -165,11 +198,14 @@
             vlanAddr = "192.168.2.142";
           };
           modules = [
-            ({ pkgs, ... }:
+            nvchadHmModule
+            (
+              { pkgs, ... }:
               {
                 nixpkgs.overlays = [ claude-code.overlays.default ];
                 environment.systemPackages = [ pkgs.claude-code ]; # or pkgs.claude-code-bun
-              })
+              }
+            )
 
             ./hosts/rhea
             ./hosts/proxmox-template
@@ -190,6 +226,7 @@
 
         algiers = {
           modules = [
+            nvchadHmModule
             ./hosts/algiers
             ./hosts/algiers/home
 
@@ -202,10 +239,16 @@
         };
       };
 
-      outputsBuilder = channels: with channels.nixpkgs;{
-        devShell = mkShell {
-          buildInputs = [ git vim wget nixpkgs-fmt ];
+      outputsBuilder =
+        channels: with channels.nixpkgs; {
+          devShell = mkShell {
+            buildInputs = [
+              git
+              vim
+              wget
+              nixpkgs-fmt
+            ];
+          };
         };
-      };
     };
 }

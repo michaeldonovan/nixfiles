@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config
+, pkgs
+, lib
+, ...
+}:
 {
   home.packages = with pkgs; [
     fish
@@ -27,7 +31,7 @@
       set -gx GPG_TTY (tty)
 
       eval (ssh-agent -c)
-      
+
       if test -z "$TMUX"  && test -n "$SSH_CONNECTION" 
         tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
       end
@@ -39,7 +43,9 @@
         source $OP_PLUGINS_PATH
       end
 
-      if type -qf lvim
+      if type -qf nvim
+        abbr vim 'nvim'
+      else if type -qf lvim
         abbr vim 'lvim'
       else if type -qf spacevim
         abbr vim 'spacevim'
