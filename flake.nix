@@ -31,16 +31,17 @@
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , utils
-    , nur
-    , home-manager
-    , nix-darwin
-    , vscode-server
-    , claude-code
-    , nix4nvchad
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      utils,
+      nur,
+      home-manager,
+      nix-darwin,
+      vscode-server,
+      claude-code,
+      nix4nvchad,
+      ...
     }:
     let
       nvchadHmModule = {
@@ -52,20 +53,7 @@
 
       sharedOverlays = [
         nur.overlays.default
-        (
-          final: prev:
-            if prev.stdenv.hostPlatform.isDarwin then
-              {
-                direnv = prev.direnv.overrideAttrs (old: {
-                  postPatch = (old.postPatch or "") + ''
-                    substituteInPlace GNUmakefile \
-                      --replace "-linkmode=external" "-linkmode=internal"
-                  '';
-                });
-              }
-            else
-              { }
-        )
+
       ];
 
       channelsConfig.allowUnfree = true;
@@ -213,7 +201,7 @@
               git
               vim
               wget
-              nixpkgs-fmt
+
             ];
           };
         };

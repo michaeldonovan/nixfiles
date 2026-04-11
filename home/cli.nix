@@ -1,5 +1,17 @@
 { config, pkgs, ... }:
 
+let
+  direnvPackage =
+    if pkgs.stdenv.isDarwin then
+      pkgs.direnv.overrideAttrs (_: {
+        # direnv's fish test suite is currently unreliable on Darwin here and
+        # blocks local darwin-rebuilds.
+        doCheck = false;
+      })
+    else
+      pkgs.direnv;
+in
+
 {
   imports = [
     ./fish.nix
@@ -54,6 +66,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+    package = direnvPackage;
   };
 
   home.sessionVariables = {
