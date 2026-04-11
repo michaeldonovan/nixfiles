@@ -19,6 +19,5 @@
     yarn
     hugo
 
-    nixpkgs-fmt
   ];
 }
