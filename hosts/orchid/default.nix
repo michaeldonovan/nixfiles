@@ -3,13 +3,12 @@ let
   nfsOpts = "x-systemd.automount,x-systemd.idle-timeout=60,x-systemd.device-timeout=175,x-systemd.mount-timeout=5s,noauto,soft";
 in
 {
-  imports =
-    [
-    ];
+  imports = [
+  ];
 
   boot.loader.grub.device = "/dev/sda";
   boot.supportedFilesystems = [ "zfs" ];
-  # boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
+  boot.kernelParams = [ "zfs.zfs_arc_max=0" ];
   networking.hostId = "22c6e578";
   boot.zfs.extraPools = [ "orchid" ];
   services.zfs = {
@@ -33,7 +32,10 @@ in
   fileSystems."/rendon/orchidbackups" = {
     device = "192.168.1.146:/mnt/rendon/orchidbackups";
     fsType = "nfs";
-    options = [ "${nfsOpts}" "user" ];
+    options = [
+      "${nfsOpts}"
+      "user"
+    ];
   };
   fileSystems."/rendon/Books" = {
     device = "192.168.1.146:/mnt/rendon/Books";

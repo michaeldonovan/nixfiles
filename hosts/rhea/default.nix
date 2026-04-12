@@ -5,24 +5,27 @@ let
   smbOpts = "uid=1000,gid=100,credentials=${smbCredentialsFile},_netdev,mfsymlinks,noatime,cache=strict,actimeo=1,nosharesock,serverino,hard,intr";
 in
 {
-  imports =
-    [
-      ./gpu.nix
-      ./borg.nix
-    ];
+  imports = [
+    ./gpu.nix
+    ./borg.nix
+  ];
   environment.systemPackages = with pkgs; [
     ffmpeg
     mkvtoolnix
   ];
 
   boot.loader.grub.device = "/dev/sda";
-  boot.supportedFilesystems = [ "zfs" "nfs" "cifs" ];
+  boot.supportedFilesystems = [
+    "zfs"
+    "nfs"
+    "cifs"
+  ];
 
   boot.kernel.sysctl = {
     "vm.swappiness" = 10;
   };
 
-  #  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
+  boot.kernelParams = [ "zfs.zfs_arc_max=0" ];
   networking.hostId = "5595a05c";
   boot.zfs.extraPools = [ "rhea" ];
   services.zfs = {
@@ -94,26 +97,35 @@ in
   fileSystems."/rendon/Music" = {
     device = "//192.168.1.146/Music";
     fsType = "cifs";
-    options = [ "${smbOpts}" "ro" ];
+    options = [
+      "${smbOpts}"
+      "ro"
+    ];
   };
   fileSystems."/rendon/Documents" = {
     device = "//192.168.1.146/Documents";
     fsType = "cifs";
-    options = [ "${smbOpts}" "ro" ];
+    options = [
+      "${smbOpts}"
+      "ro"
+    ];
   };
   fileSystems."/rendon/Datasets" = {
     device = "//192.168.1.146/Datasets";
     fsType = "cifs";
-    options = [ "${smbOpts}" "ro" ];
+    options = [
+      "${smbOpts}"
+      "ro"
+    ];
   };
   fileSystems."/rendon/proxmox_config_backups" = {
     device = "//192.168.1.146/proxmox_config_backups";
     fsType = "cifs";
-    options = [ "${smbOpts}" "ro" ];
+    options = [
+      "${smbOpts}"
+      "ro"
+    ];
   };
-
-
-
 
   systemd.services.pfsense-backup = {
     enable = true;
@@ -172,7 +184,6 @@ in
       Persistent = true;
     };
   };
-
 
   # photoprism backups
   systemd.services.photoprism-backup = {
