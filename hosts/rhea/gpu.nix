@@ -15,7 +15,6 @@
     };
   };
 
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -29,7 +28,13 @@
   };
 
   systemd.services.docker = {
-    after = [ "nvidia-persistenced.service" ];
-    wants = [ "nvidia-persistenced.service" ];
+    after = [
+      "nvidia-persistenced.service"
+      "nvidia-container-toolkit-cdi-generator.service"
+    ];
+    wants = [
+      "nvidia-persistenced.service"
+      "nvidia-container-toolkit-cdi-generator.service"
+    ];
   };
 }
