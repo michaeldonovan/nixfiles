@@ -109,6 +109,7 @@
 
             ./modules/common.nix
             ./modules/docker.nix
+            ./modules/telegraf.nix
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
@@ -168,6 +169,7 @@
 
             ./modules/common.nix
             ./modules/docker.nix
+            ./modules/telegraf.nix
             ./modules/zabbix-agent.nix
             ./modules/nofirewall.nix
             ./modules/summit-user.nix
