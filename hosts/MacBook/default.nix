@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   users.users.michael = {
     shell = pkgs.fish;
     home = "/Users/michael";
   };
-
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -29,6 +32,11 @@
   system.primaryUser = "michael";
 
   programs.fish.enable = true;
+
+  environment.systemPath = [
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
+  ];
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
