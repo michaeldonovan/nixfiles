@@ -6,6 +6,8 @@ let
   tokenEnvFile = "/secrets/telegraf.env";
 in
 {
+  users.users.telegraf.extraGroups = [ "docker" ];
+
   services.telegraf = {
     enable = true;
     # Expected format: INFLUX_TOKEN=...
@@ -59,10 +61,17 @@ in
         };
         kernel = { };
         mem = { };
-        net = { };
+        net = {
+          ignore_protocol_stats = true;
+        };
         processes = { };
         swap = { };
         system = { };
+        docker = {
+          endpoint = "unix:///var/run/docker.sock";
+          gather_services = false;
+          timeout = "5s";
+        };
       };
 
       outputs.influxdb_v2 = {
