@@ -21,9 +21,9 @@ in
     "cifs"
   ];
 
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 10;
-  };
+  # boot.kernel.sysctl = {
+  #   "vm.swappiness" = 10;
+  # };
 
   boot.kernelParams = [ "zfs.zfs_arc_max=0" ];
   networking.hostId = "5595a05c";
@@ -125,6 +125,11 @@ in
       "${smbOpts}"
       "ro"
     ];
+  };
+  fileSystems."/rendon/Games" = {
+    device = "//192.168.1.146/Games";
+    fsType = "cifs";
+    options = [ "${smbOpts}" ];
   };
 
   systemd.services.pfsense-backup = {
