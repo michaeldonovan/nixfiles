@@ -73,4 +73,8 @@ in
     DO_NOT_TRACK = 1;
     VCPKG_DISABLE_METRICS = 1;
   };
+
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
 }
