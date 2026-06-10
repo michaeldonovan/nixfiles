@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }:
 {
   home.packages = with pkgs; [
@@ -22,8 +23,6 @@
 
         test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
       end
-
-
 
     '';
 
@@ -124,6 +123,11 @@
   xdg.configFile."fish/conf.d/fish_user_key_bindings.fish".text = ''
     function fish_user_key_bindings
         fish_vi_key_bindings
+    end
+  '';
+  xdg.configFile."fish/conf.d/fnm.fish".text = ''
+    if type -q fnm
+      fnm env --use-on-cd --shell fish | source
     end
   '';
 }
