@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./users.nix
@@ -9,20 +14,18 @@
 
   networking.enableIPv6 = true;
 
-
-  nix =
-    {
-      package = pkgs.nix;
-      settings.auto-optimise-store = true;
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
-      extraOptions = ''
-        experimental-features = nix-command flakes
-      '';
+  nix = {
+    package = pkgs.nix;
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
@@ -38,6 +41,7 @@
     git
     fish
     fasd
+    ghostty.terminfo
     gnupg
     nix-prefetch-scripts
     nix-index
