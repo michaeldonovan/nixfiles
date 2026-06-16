@@ -1,15 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-26.05-chilled/0.1";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    claude-code = {
-      url = "github:sadjow/claude-code-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,10 +16,6 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nur = {
-      url = "github:nix-community/NUR";
     };
 
     nix-darwin = {
@@ -35,11 +29,9 @@
       self,
       nixpkgs,
       utils,
-      nur,
       home-manager,
       nix-darwin,
       vscode-server,
-      claude-code,
       nix4nvchad,
       ...
     }:
@@ -50,11 +42,6 @@
     in
     utils.lib.mkFlake {
       inherit self inputs;
-
-      sharedOverlays = [
-        nur.overlays.default
-
-      ];
 
       channelsConfig.allowUnfree = true;
 
@@ -155,13 +142,6 @@
           };
           modules = [
             nvchadHmModule
-            (
-              { pkgs, ... }:
-              {
-                nixpkgs.overlays = [ claude-code.overlays.default ];
-                environment.systemPackages = [ pkgs.claude-code ]; # or pkgs.claude-code-bun
-              }
-            )
 
             ./hosts/rhea
             ./hosts/proxmox-template
