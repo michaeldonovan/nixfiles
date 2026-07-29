@@ -57,6 +57,9 @@ in
     jq
     regclient
     nixfmt
+    sops
+    age
+    just
   ];
 
   programs.htop.enable = true;
