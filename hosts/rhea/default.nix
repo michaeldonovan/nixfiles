@@ -14,7 +14,7 @@ in
     mkvtoolnix
   ];
 
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
   boot.supportedFilesystems = [
     "zfs"
     "nfs"
@@ -207,6 +207,17 @@ in
       OnCalendar = "*-*-* 00:00:00";
       Persistent = true;
     };
+  };
+
+  systemd.services.docker = {
+    after = [
+      "rendon-Downloads.mount"
+      "rendon-Plex.mount"
+    ];
+    wants = [
+      "rendon-Downloads.mount"
+      "rendon-Plex.mount"
+    ];
   };
 
 }
