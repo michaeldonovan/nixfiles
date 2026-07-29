@@ -11,6 +11,7 @@
     mediainfo
     parted
     fio
+    nodejs
   ];
 
   services.gpg-agent = {
