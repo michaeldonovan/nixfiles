@@ -5,7 +5,6 @@
 
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix4nvchad = {
@@ -37,7 +36,7 @@
     }:
     let
       nvchadHmModule = {
-        home-manager.sharedModules = [ nix4nvchad.homeManagerModule ];
+        home-manager.sharedModules = [ nix4nvchad.homeManagerModules.default ];
       };
     in
     utils.lib.mkFlake {
