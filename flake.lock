@@ -43,11 +43,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1787146702,
         "narHash": "sha256-YbRcLdU/yK4gWsQg7V8WTKZHfXL33g8+wSFUX3wyevs=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "173b7e8d40fdc8c296a9c99854314f17a3a1704c",
+=======
+        "lastModified": 1789182507,
+        "narHash": "sha256-9nt4W0HNNP84B+b37yRs9Zxat1ZR5guJxEZDEjAgex4=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "b1d1b60084970f9d1e2b72662639dab6d039be71",
+>>>>>>> a0e6218 (flake.lock: Update)
         "type": "github"
       },
       "original": {
@@ -86,11 +94,19 @@
         "nvchad-starter": "nvchad-starter"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1786797655,
         "narHash": "sha256-qAWI5Vf0xaRmb8/l9XWYrvEgrIaqKBv8Dg81JO7wkrY=",
         "owner": "nix-community",
         "repo": "nix4nvchad",
         "rev": "b878640ae13c8f70f41aa1159234206051a4378c",
+=======
+        "lastModified": 1789224828,
+        "narHash": "sha256-FDUdpZ3GcIpS9y63dpjcBFu8n56LyTdBVxlThiSusKU=",
+        "owner": "nix-community",
+        "repo": "nix4nvchad",
+        "rev": "01ae592dac822827b5e9d372005fe801d64498a6",
+>>>>>>> a0e6218 (flake.lock: Update)
         "type": "github"
       },
       "original": {
@@ -101,12 +117,21 @@
     },
     "nixpkgs": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1786313170,
         "narHash": "sha256-9BG7OgUWdu0ONDO5X2q6+K4bsuBITkX/3W4nNJu1Ito=",
         "rev": "fcb8fcd6bf2d0adecae5bd491afaaaf8311b758d",
         "revCount": 1011667,
         "type": "tarball",
         "url": "https://api.flakehub.com/f/pinned/DeterminateSystems/nixpkgs-26.05-chilled/0.1.1011667%2Brev-fcb8fcd6bf2d0adecae5bd491afaaaf8311b758d/01a01364-1254-7162-9886-8cd5a8daddf1/source.tar.gz"
+=======
+        "lastModified": 1787962033,
+        "narHash": "sha256-u6z9VTZA4Kf3RkHQo9sQI7NI4Ei/uiU9vrMqOiwWP1Y=",
+        "rev": "c5c4a43b0e8056328ec4529f735cabdb8f1942bb",
+        "revCount": 1012930,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/DeterminateSystems/nixpkgs-26.05-chilled/0.1.1012930%2Brev-c5c4a43b0e8056328ec4529f735cabdb8f1942bb/01a07f85-4ae2-7101-a842-19eb989e7cfc/source.tar.gz"
+>>>>>>> a0e6218 (flake.lock: Update)
       },
       "original": {
         "type": "tarball",
