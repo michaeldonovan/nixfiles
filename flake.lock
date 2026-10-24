@@ -145,12 +145,55 @@
         "type": "github"
       }
     },
+    "pi-bolt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pi-bolt": "pi-bolt_2",
+        "pi-bolt-source": [
+          "pi-bolt",
+          "pi-bolt"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792843355,
+        "narHash": "sha256-Dbmfa/2jVm2G4JwTW2jLt9zLVMRoAnB3wWNNIvJLu6A=",
+        "owner": "Shrub24",
+        "repo": "Pi-Bolt.nix",
+        "rev": "d98a8e4b561d0bf45a3ec93cd7c0810097c3b47b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shrub24",
+        "repo": "Pi-Bolt.nix",
+        "type": "github"
+      }
+    },
+    "pi-bolt_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792830596,
+        "narHash": "sha256-zub3pogBp7ZDNFSlAl3s5tW9dAm/F6jptVkn5C5lU5Y=",
+        "owner": "opensec-git",
+        "repo": "Pi-Bolt",
+        "rev": "11c2b3fbceef0e40ba9b5d9ccafa6ac25e3bd8b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "opensec-git",
+        "ref": "bolt-v1.0.1",
+        "repo": "Pi-Bolt",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs",
+        "pi-bolt": "pi-bolt",
         "utils": "utils",
         "vscode-server": "vscode-server"
       }

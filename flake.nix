@@ -21,6 +21,11 @@
       url = "github:LnL7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pi-bolt = {
+      url = "github:Shrub24/Pi-Bolt.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,11 +37,16 @@
       nix-darwin,
       vscode-server,
       nix4nvchad,
+      pi-bolt,
       ...
     }:
     let
       nvchadHmModule = {
         home-manager.sharedModules = [ nix4nvchad.homeManagerModules.default ];
+      };
+      piBoltModule = { pkgs, ... }: {
+        nixpkgs.overlays = [ pi-bolt.overlays.default ];
+        home-manager.users.michael.home.packages = [ pkgs.pi-bolt ];
       };
     in
     utils.lib.mkFlake {
@@ -72,6 +82,7 @@
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
+            piBoltModule
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/zabbix-agent.nix
@@ -93,6 +104,7 @@
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
+            piBoltModule
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/telegraf.nix
@@ -121,6 +133,7 @@
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
+            piBoltModule
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/nofirewall.nix
@@ -146,6 +159,7 @@
             ./hosts/proxmox-template
             ./hosts/proxmox-template/home
 
+            piBoltModule
             ./modules/common.nix
             ./modules/docker.nix
             ./modules/telegraf.nix
@@ -166,6 +180,7 @@
             ./hosts/algiers
             ./hosts/algiers/home
 
+            piBoltModule
             ./modules/common.nix
             ./modules/docker.nix
 
