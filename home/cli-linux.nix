@@ -12,6 +12,7 @@
     parted
     fio
     nodejs
+    nono
   ];
 
   services.gpg-agent = {
