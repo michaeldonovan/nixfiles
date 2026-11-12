@@ -17,12 +17,11 @@
     };
   };
 
-
-
   environment.systemPackages = with pkgs; [
     docker
     docker-compose
     nix-prefetch-docker
     ctop
+    docker-sbx
   ];
 }
