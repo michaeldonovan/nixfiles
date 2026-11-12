@@ -13,6 +13,7 @@
     fio
     nodejs
     nono
+    openssl
   ];
 
   services.gpg-agent = {
