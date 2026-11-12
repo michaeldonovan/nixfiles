@@ -60,6 +60,7 @@ in
     sops
     age
     just
+    dust
   ];
 
   programs.htop.enable = true;
