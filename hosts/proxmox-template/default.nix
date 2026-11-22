@@ -2,7 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hostname, netiface, lanAddr, vlanAddr, ... }:
+{
+  config,
+  pkgs,
+  hostname,
+  netiface,
+  lanAddr,
+  vlanAddr,
+  ...
+}:
 let
   router = {
     lanAddr = "192.168.1.1";
@@ -12,11 +20,10 @@ let
   prefixLength = 24;
 in
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -28,7 +35,6 @@ in
     "console=ttyS0,115200"
     "console=tty1"
   ];
-
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -42,10 +48,12 @@ in
 
     interfaces.${netiface} = {
       useDHCP = false;
-      ipv4.addresses = [{
-        address = lanAddr;
-        prefixLength = prefixLength;
-      }];
+      ipv4.addresses = [
+        {
+          address = lanAddr;
+          prefixLength = prefixLength;
+        }
+      ];
     };
 
     vlans = {
@@ -58,15 +66,19 @@ in
     interfaces.vlan2 = {
       useDHCP = false;
       ipv4 = {
-        addresses = [{
-          address = vlanAddr;
-          prefixLength = prefixLength;
-        }];
-        routes = [{
-          address = lanNet;
-          prefixLength = prefixLength;
-          via = router.vlanAddr;
-        }];
+        addresses = [
+          {
+            address = vlanAddr;
+            prefixLength = prefixLength;
+          }
+        ];
+        routes = [
+          {
+            address = lanNet;
+            prefixLength = prefixLength;
+            via = router.vlanAddr;
+          }
+        ];
       };
     };
   };
@@ -77,6 +89,27 @@ in
     git
     pciutils
   ];
+
+  users.users.hermes = {
+    isNormalUser = true;
+    shell = pkgs.bashInteractive;
+    homeMode = "0700";
+    hashedPassword = "!";
+    extraGroups = [ ];
+    openssh.authorizedKeys.keys = [
+      "restrict ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGkjap3PBQ1qnIk8HgWH3tjlsoGTKbhNs3R6iKVrzZCm hermes-sysadmin"
+    ];
+  };
+
+  # Enforce these limits even if Hermes adds another key in its home directory.
+  services.openssh.extraConfig = ''
+    Match User hermes
+      AuthenticationMethods publickey
+      DisableForwarding yes
+      PermitTTY no
+      PermitUserRC no
+    Match all
+  '';
 
   services.qemuGuest.enable = true;
 
@@ -92,4 +125,3 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 }
-
