@@ -1,5 +1,10 @@
 switch:
-  sudo nixos-rebuild switch --flake . -j 8
+  #!/usr/bin/env bash
+  if [[ $(uname) == Darwin ]]; then
+    sudo darwin-rebuild switch --flake .
+  else
+    sudo nixos-rebuild switch --flake .
+  fi
 
 up: 
   nix flake update --commit-lock-file
