@@ -67,7 +67,6 @@
 
     shellAliases = {
       git = "hub";
-      pi = "pi-bolt";
     };
 
     functions = {
